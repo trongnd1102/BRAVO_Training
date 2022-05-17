@@ -5,9 +5,10 @@
         [cv]="products">
     </wj-collection-view-navigator>
   <!-- grid table -->
-  <wj-flex-grid [itemsSource]="products"
+  <wj-flex-grid [itemsSource]="products" #theGrid
         headersVisibility="Column"
-        [alternatingRowStep]="0">
+        [alternatingRowStep]="0"
+        (loadedRows)="onloadedRows(theGrid)">
     <wj-flex-grid-column [header]="'Id'" [binding]="'Id'" [width]="100"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'ParentId'" [binding]="'ParentId'" [width]="100"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'IsGroup'" [binding]="'IsGroup'" [width]="100"></wj-flex-grid-column>

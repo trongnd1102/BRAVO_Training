@@ -1,0 +1,10 @@
+:host >>> .wj-cell.service {
+  background-color:aqua;
+}
+:host >>> .wj-cell.product {
+  background-color: magenta;
+}
+
+:host >>> .wj-cell.supplies {
+  background-color: lime;
+}
