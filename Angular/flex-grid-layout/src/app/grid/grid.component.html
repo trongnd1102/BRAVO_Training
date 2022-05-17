@@ -1,1 +1,19 @@
-
+<div class="grid-container">
+  <wj-flex-grid [itemsSource]="products" [isReadOnly]="true">
+    <wj-flex-grid-column [header]="'Id'" [binding]="'Id'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'ParentId'" [binding]="'ParentId'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'IsGroup'" [binding]="'IsGroup'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'Name'" [binding]="'Name'" [width]="300"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'ItemTypeName'" [binding]="'ItemTypeName'" [width]="150"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'Code'" [binding]="'Code'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'Unit'" [binding]="'Unit'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'ItemGroupCode'" [binding]="'ItemGroupCode'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'BranchCode'" [binding]="'BranchCode'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'IsActive'" [binding]="'IsActive'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'CreatedBy'" [binding]="'CreatedBy'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'CreatedAt'" [binding]="'CreatedAt'" [width]="200"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'ModifiedBy'" [binding]="'ModifiedBy'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'ModifiedAt'" [binding]="'ModifiedAt'" [width]="200"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'_SelectKey__wibkaw'" [binding]="'_SelectKey__wibkaw'" [width]="100"></wj-flex-grid-column>
+  </wj-flex-grid>
+</div>

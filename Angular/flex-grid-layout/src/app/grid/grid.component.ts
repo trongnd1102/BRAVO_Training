@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: 'app-grid',
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./grid.component.css']
 })
 export class GridComponent implements OnInit {
+  products: any;
 
-  constructor() { }
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
+    this.getData();
   }
+
+  // get data from JSON file
+  getData() {
+    this.httpClient.get("assets/product.json").subscribe((data) => {
+      this.products = data;
+      console.log(this.products);
+    })
+  }
+
 
 }
