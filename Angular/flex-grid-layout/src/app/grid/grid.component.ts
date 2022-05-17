@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
+import { CollectionView }  from '@grapecity/wijmo';
 
 @Component({
   selector: 'app-grid',
@@ -12,14 +13,14 @@ export class GridComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit(): void {
-    this.getData();
+    this._getData();
   }
 
-  // get data from JSON file
-  getData() {
+  private _getData() {
+    // get data from JSON file
     this.httpClient.get("assets/product.json").subscribe((data) => {
-      this.products = data;
-      console.log(this.products);
+      // create a paged CollectionView with 10 items per page
+      this.products = new CollectionView(data, {pageSize: 10});
     })
   }
 
