@@ -1,0 +1,56 @@
+.switch-case {
+  display: flex;
+  background-color: aqua;
+  justify-content: space-around;
+}
+
+.switch-case div {
+  margin: 10px;
+}
+
+.flex-container {
+  display: flex;
+  background-color: DodgerBlue;
+}
+
+.flex-container div {
+  background-color: white;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+
+.element {
+  background-color: red !important;
+}
+
+.flex-container-shrink {
+  display: flex;
+  background-color: DodgerBlue;
+}
+
+.flex-container-shrink div {
+  background-color: white;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+
+.flex-container-align {
+  display: flex;
+  height: 200px;
+  background-color: DodgerBlue;
+}
+
+.flex-container-align div {
+  background-color: white;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}

@@ -1,0 +1,2 @@
+<input *ngIf="!multiLine" [style.text-transform]="style" (blur)="onBlur()" (input)="changes($event)">
+<textarea *ngIf="multiLine" [style.text-transform]="style" (blur)="onBlur()" (input)="changes($event)"></textarea>

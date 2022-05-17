@@ -1,0 +1,106 @@
+<h2 style="text-align: center">Flex Container Example</h2>
+<div class="container">
+  <div class="switch-case">
+    <div class="flex-direction-case">Flex Direction (1)
+      <form [formGroup]="form">
+        <select formControlName="FlexDirection" (change)="changeFlexDirection()">
+          <option>Column</option>
+          <option>Column Reverse</option>
+          <option>Row</option>
+          <option>Row Reverse</option>
+        </select>
+      </form>
+    </div>
+    <div class="flex-wrap-case">Flex Wrap (1)
+      <form [formGroup]="form">
+        <select formControlName="FlexWrap" (change)="changeFlexWrap()">
+          <option>Wrap</option>
+          <option>No Wrap</option>
+          <option>Wrap Reverse</option>
+        </select>
+      </form>
+    </div>
+    <div class="flex-flow-case">Flex Flow = Direction + Wrap (1)
+      <form [formGroup]="form">
+        <select formControlName="FlexFlow" (change)="changeFlexFlow()">
+          <option>Column Wrap</option>
+          <option>Row Wrap</option>
+          <option>Column Wrap Reverse</option>
+          <option>Row Wrap Reverse</option>
+        </select>
+      </form>
+    </div>
+    <div class="justify-content-case">Justify Content (2)
+      <form [formGroup]="form">
+        <select formControlName="JustifyContent" (change)="changeJustifyContent()">
+          <option>Center</option>
+          <option>Flex Start</option>
+          <option>Flex End</option>
+          <option>Space Around</option>
+          <option>Space Between</option>
+        </select>
+      </form>
+    </div>
+    <div class="align-items-case">Align Items (1)
+      <form [formGroup]="form">
+        <select formControlName="AlignItems" (change)="changeAlignItems()">
+          <option>Center</option>
+          <option>Flex Start</option>
+          <option>Flex End</option>
+          <option>Stretch</option>
+          <option>Baseline</option>
+        </select>
+      </form>
+    </div>
+    <div class="align-content-case">Align Content (should wrap) (3)
+      <form [formGroup]="form">
+        <select formControlName="AlignContent" (change)="changeAlignContent()">
+          <option>Center</option>
+          <option>Flex Start</option>
+          <option>Flex End</option>
+          <option>Stretch</option>
+          <option>Space Around</option>
+          <option>Space Between</option>
+        </select>
+      </form>
+    </div>
+  </div>
+  <br>
+  <div class="flex-container" #flex>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+  </div>
+  <br>
+  <div class="flex-container-justify" #justifyContent>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </div>
+  <br>
+  <div class="flex-container-align-content" #alignContent>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+  </div>
+
+</div>

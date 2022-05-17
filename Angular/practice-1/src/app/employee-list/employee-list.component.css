@@ -1,0 +1,45 @@
+.flex-container {
+  display: flex;
+  flex-direction: column;
+}
+.flex-container div {
+  background-color: #f1f1f1;
+  text-align: center;
+}
+h2 {
+  background-color: #00897b;
+  color: #fff;
+}
+.content {
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
+.wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.wrap table {
+  table-layout: fixed;
+  width: 100%;
+}
+.wrap table.head {
+  width: calc(100% - 15px);
+  background-color: #f39c12;
+}
+.wrap table.head tr td {
+  background: #eee;
+}
+table tr th {
+  text-align: center;
+}
+table tr td {
+  border: 1px solid black;
+  padding: 5px;
+  word-wrap: break-word;
+}
+.scroll-table {
+  height: 500px;
+  overflow-y: auto;
+}

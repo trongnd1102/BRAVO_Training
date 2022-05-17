@@ -1,0 +1,169 @@
+employees: Employee[] = [];
+backUpData: Employee[] = [];
+
+/**
+ * Method 1: Each column has its function
+ */
+sortId(): void {
+  this.employees.sort((a: { id: string; }, b: { id: string; }) => {
+    return a.id < b.id ? -1 : 1;
+  });
+}
+
+/**
+ * Method 2 => upgrade: All column use 1 function
+ */
+isReverse = false;
+sortData(column: string): void {
+  if(this.isReverse == false) {
+    this.employees.sort((a: any, b: any) => {
+      return a[column] < b[column] ? -1 : 1;
+    });
+    this.isReverse = !this.isReverse;
+  } else {
+    this.employees.sort((a: any, b: any) => {
+      return a[column] < b[column] ? 1 : -1;
+    });
+    this.isReverse = !this.isReverse;
+  }
+  console.log(this.employees);
+}
+
+/**
+ * Method 3 => upgrade: Call another function
+ */
+sortMod(col: string, bASC: boolean, a: any, b: any): number {
+  if (bASC) {
+    return a[col] < b[col] ? 1 : -1;
+  } else {
+    return a[col] < b[col] ? -1 : 1;
+  }
+}
+sortData(column: string): void {
+  this.employees.sort((a,b) => {
+    return this.sortMod(column, this.isReverse,a,b);
+  })
+}
+
+/**
+ * Method 4 => upgrade: Use bind() function
+ */
+sortData(column: string): void {
+  this.employees.sort(this.sortMod.bind(this, column, this.isReverse));
+}
+
+/**
+ * Method 5 => upgrade: Unsort
+ */
+sortStatus = 0;
+sortData(column: string): void {
+  let isReverse = false;
+  switch(this.sortStatus) {
+    case 0:
+      this.employees.sort(this.sortMod.bind(this, column, isReverse));
+      this.sortStatus = 1;
+      break;
+    case 1:
+      isReverse = true;
+      this.employees.sort(this.sortMod.bind(this, column, isReverse));
+      this.sortStatus = 2;
+      break;
+    case 2:
+      this.employees = this.backUpData.slice();
+      this.sortStatus = 0;
+      break;
+  }
+}
+
+/**
+ * Method 6 => upgrade: Separate sorted column
+ */
+sortColumn: string = 'id';
+sortData(column: string): void {
+  let isReverse = false;
+  if (this.sortColumn == column) {
+    switch(this.sortStatus) {
+      case 0:
+        this.employees.sort(this.sortMod.bind(this, column, isReverse));
+        this.sortStatus = 1;
+        break;
+      case 1:
+        isReverse = true;
+        this.employees.sort(this.sortMod.bind(this, column, isReverse));
+        this.sortStatus = 2;
+        break;
+      case 2:
+        this.employees = this.backUpData.slice();
+        this.sortStatus = 0;
+        break;
+    }
+  } else {
+    this.employees.sort(this.sortMod.bind(this, column, isReverse));
+    this.sortColumn = column;
+    this.sortStatus = 1;
+  }
+}
+
+/**
+ * Method 7 => upgrade: Save sort state of sorted column
+ */
+sortFunc(col: string, state: number, a: any, b: any): number {
+  if (state == 0){
+    return a[col] < b[col] ? -1 : 1;
+  } else if (state == 1) {
+    return a[col] < b[col] ? 1 : -1;
+  } else {
+    return 0;
+  }
+}
+sortState: any = {
+  id: 0,
+  dateOfBirth: 0,
+  startDate: 0
+}
+sortData(column: string): void {
+  switch(this.sortState[column]) {
+    case 0:
+      this.employees.sort(this.sortFunc.bind(this, column, this.sortState[column]));
+      this.sortState[column] = 1;
+      break;
+    case 1:
+      this.employees.sort(this.sortFunc.bind(this, column, this.sortState[column]));
+      this.sortState[column] = 2;
+      break;
+    case 2:
+      this.employees = this.backUpData.slice();
+      this.sortState[column] = 0;
+      break;
+  }
+}
+
+/**
+ * Method 8 => upgrade: Reduce code
+ */
+sortData(column: string): void {
+  if(this.sortState[column] == 2) {
+    this.employees = this.backUpData.slice();
+    this.sortState[column] = 0;
+  } else {
+    this.employees.sort(this.sortFunc.bind(this, column, this.sortState[column]));
+    this.sortState[column] += 1;
+  }
+}
+
+/**
+ * Method 9 => upgrade: Use object Map()
+ */
+sortState = new Map();
+sortData(column: string): void {
+  if(this.sortState.get(column) == null){
+    this.sortState.set(column, 0);
+  }
+  if(this.sortState.get(column) == 2) {
+    this.employees = this.backUpData.slice();
+    this.sortState.set(column,0);
+  } else {
+    this.employees.sort(this.sortFunc.bind(this, column, this.sortState.get(column)));
+    this.sortState.set(column, this.sortState.get(column) + 1);
+  }
+}

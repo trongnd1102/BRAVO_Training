@@ -1,0 +1,58 @@
+.container {
+  height: 500px;
+}
+
+.switch-case {
+  display: flex;
+  background-color: aqua;
+  justify-content: space-around;
+}
+
+.switch-case div {
+  margin: 10px;
+}
+
+.flex-container {
+  display: flex;
+  height: 200px;
+  background-color: DodgerBlue;
+}
+
+.flex-container > div {
+  background-color: white;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+
+.flex-container-justify {
+  display: flex;
+  background-color: DodgerBlue;
+}
+
+.flex-container-justify  div {
+  background-color: white;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}
+
+.flex-container-align-content {
+  display: flex;
+  height: 300px;
+  flex-wrap: wrap;
+  background-color: DodgerBlue;
+}
+
+.flex-container-align-content  div {
+  background-color: white;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+}

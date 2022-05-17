@@ -1,0 +1,329 @@
+/*
+ * Header CSS
+ */
+.header {
+  display: flex;
+  height: 35px;
+  justify-content: space-between;
+  background-color: #f8f8f8;
+}
+
+.header .header-list {
+  margin: 0;
+  padding: 5px;
+}
+
+.header .header-list li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.header .header-list .border-left-dotted {
+  border-left: 1px dotted #ccc;
+}
+
+.header .header-list .border-left-solid {
+  border-left: 1px solid #ccc;
+  margin: 5px;
+}
+
+/*
+ * Content CSS
+ */
+ .content {
+  display: flex;
+}
+
+.side-bar {
+  width: 250px;
+  background-color: #eaecf5;
+}
+
+.main-content {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  overflow-x: auto;
+}
+
+.main-content-change {
+  height: 90vh;
+  display: flex;
+  flex-direction: row;
+  background-color: #ffffff;
+  overflow-x: auto;
+}
+
+/*
+ * Side bar CSS
+ */
+.side-bar-button {
+  background-color: #f0f0f0;
+}
+.side-bar-button ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.side-bar-button ul li {
+  margin: 5px;
+}
+
+.side-bar-option {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(90vh - 20px);
+}
+
+.side-bar-option-data {
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+}
+
+.side-bar-option-filter {
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-folder {
+  padding-left: 0;
+}
+
+.list-folder ul {
+  margin-left: 10px;
+  padding-left: 10px;
+  list-style: none;
+  border-left: 1px dashed #ccc;
+}
+
+.list-folder li {
+  list-style: none;
+  font-size: 12px;
+}
+
+.folder {
+  margin: 5px;
+}
+
+.folder:hover {
+  background-color: #cce8ff;
+}
+
+.folder ul {
+  display: flex;
+  flex-direction: column;
+}
+
+/*
+ * Main Table CSS
+ */
+.main-table-status {
+  background-color: #f0f0f0;
+  height: 20px;
+}
+
+.main-table-status .fa-solid {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.main-table {
+  height: 90vh;
+  overflow-y: auto;
+}
+
+.main-table table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.main-table table tr th {
+  position: sticky;
+  top: 0;
+  height: 30px;
+  padding: 5px;
+  font-size: 12px;
+  background-color: #dfe3e8;
+  border-right: 1px solid #ccc;
+}
+
+.main-table table tr td {
+  padding: 5px;
+  height: 30px;
+  font-size: 12px;
+  word-wrap: break-word;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.main-table table tr:nth-child(even){
+  background-color: #ecf2fe
+}
+
+.select-main-table-row {
+  background-color: #cce8ff !important;
+}
+
+/*
+ * Sub Table Option CSS
+ */
+.sub-table-option {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sub-table-option-button {
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.sub-table-option-button button {
+  font-size: 12px;
+}
+
+.list-option {
+  margin: 0;
+}
+
+.list-option li {
+  display: inline-block;
+  vertical-align: middle;
+  list-style: none;
+}
+
+/*
+ * Sub Table CSS
+ */
+.sub-table-change {
+  width: 25%;
+}
+
+.sub-list-table {
+  display: flex;
+  height: 30vh;
+}
+
+.sub-list-table-change {
+  height: calc(85vh - 4px);
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-between; */
+}
+
+.sub-table-1 {
+  flex: 70%;
+}
+
+.sub-table-2 {
+  flex: 30%;
+  border-left: 3px solid #ccc;
+}
+
+.sub-table-2-change {
+  border-left: 0;
+  border-top: 3px solid #ccc;
+}
+
+@media screen and (max-width: 800px) {
+  .sub-list-table {
+    flex-direction: column;
+  }
+  .sub-table-1, .sub-table-2 {
+    flex: auto;
+    height: auto;
+  }
+}
+
+/*
+ * Sub Table 1 CSS
+ */
+.sub-table-1 table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.sub-table-1 table tr th {
+  position: sticky;
+  top: 0;
+  height: 30px;
+  padding: 5px;
+  font-size: 12px;
+  background-color: #dfe3e8;
+  border-right: 1px solid #ccc;
+}
+
+.sub-table-1 table tr td {
+  padding: 5px;
+  height: 30px;
+  font-size: 12px;
+  word-wrap: break-word;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.sub-table-1 table tr:nth-child(even){
+  background-color: #ecf2fe
+}
+
+/*
+ * Sub Table 2 CSS
+ */
+/* .sub-table-2 {
+  display: none;
+} */
+
+.sub-table-2 table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.sub-table-2 table tr th {
+  position: sticky;
+  top: 0;
+  height: 30px;
+  padding: 5px;
+  font-size: 12px;
+  background-color: #dfe3e8;
+  border-right: 1px solid #ccc;
+}
+
+.sub-table-2 table tr td {
+  padding: 5px;
+  height: 30px;
+  font-size: 12px;
+  word-wrap: break-word;
+  border-bottom: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.sub-table-2 table tr:nth-child(even){
+  background-color: #ecf2fe
+}
+
+/*
+ * Footer CSS
+ */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f1f1f1;
+}
+
+.footer .footer-list {
+  margin: 0;
+  padding: 0;
+}
+
+.footer .footer-list li {
+  display: inline-block;
+  margin-right: 5px;
+}

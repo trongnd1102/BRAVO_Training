@@ -1,0 +1,60 @@
+<h2 style="text-align: center">Flex Items Example</h2>
+<div class="container">
+  <div class="switch-case">
+    <div class="order-case">Order (1)<br>
+      <input type="number" min="1" max="5" [(ngModel)]="nOrder" (input)="changeOrder()">
+    </div>
+    <div class="flex-grow-case">Flex Grow (1)<br>
+      <input type="number" min="0" max="10" [(ngModel)]="nGrow" (input)="changeFlexGrow()">
+    </div>
+    <div class="flex-shrink-case">Flex Shrink (2)<br>
+      <input type="number" min="0" max="5" [(ngModel)]="nShrink" (input)="changeFlexShrink()">
+    </div>
+    <div class="flex-basis-case">Flex Basis (1) (px)<br>
+      <input type="number" [(ngModel)]="nBasis" (input)="changeFlexBasis()">
+    </div>
+    <div class="align-self-case">Align Self (3)
+      <form [formGroup]="form">
+        <select formControlName="Align" (change)="changeAlignSelf()">
+          <option>Center</option>
+          <option>Flex Start</option>
+          <option>Flex End</option>
+          <option>Stretch</option>
+        </select>
+      </form>
+    </div>
+  </div>
+  <br>
+  <div class="flex-container">
+    <div class="element" #item>1</div>
+    <div style="order: 1; flex-grow: 1">2</div>
+    <div style="order: 2; flex-grow: 1">3</div>
+    <div style="order: 3; flex-grow: 1">4</div>
+    <div style="order: 4; flex-grow: 1">5</div>
+  </div>
+  <br>
+  <div class="flex-container-shrink">
+    <div class="element" #shrink>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+  </div>
+  <br>
+  <div class="flex-container-align">
+    <div class="element" #align>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+  </div>
+</div>
+
+

@@ -1,0 +1,12 @@
+<h2>Lifecycle Hooks Example</h2>
+<h3>Parent Component!</h3>
+<button (click)="toggleChild()">Toggle Child</button>
+<br>
+<br>
+<div >
+  <label>Enter a color: </label>
+  <input type="text" [(ngModel)]="name">
+</div>
+<app-child *ngIf="isChild" [name] = "name">
+  <p #childContent>This parent sentence's color is: {{name}}</p>
+</app-child>

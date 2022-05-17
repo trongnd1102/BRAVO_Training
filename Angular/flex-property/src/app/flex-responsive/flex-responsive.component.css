@@ -1,0 +1,42 @@
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 30px;
+  text-align: center;
+}
+
+.flex-item-1 {
+  background-color: red;
+  padding: 10px;
+  flex: 25%;
+}
+
+.flex-item-2 {
+  background-color: blue;
+  padding: 10px;
+  flex: 25%;
+}
+
+.flex-item-3 {
+  background-color: yellow;
+  padding: 10px;
+  flex: 25%;
+}
+
+.flex-item-4 {
+  background-color: green;
+  padding: 10px;
+  flex: 25%;
+}
+
+@media (max-width: 1000px) {
+  .flex-item-1, .flex-item-2, .flex-item-3, .flex-item-4 {
+    flex: 50%;
+  }
+}
+
+@media (max-width: 800px) {
+  .flex-item-1, .flex-item-2, .flex-item-3, .flex-item-4 {
+    flex: 100%;
+  }
+}

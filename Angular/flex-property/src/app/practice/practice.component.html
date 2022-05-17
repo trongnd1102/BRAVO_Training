@@ -1,0 +1,40 @@
+<div class="header">
+  <h2>Danh sách nhân viên</h2>
+</div>
+
+<div class="content">
+  <div class="table-header">
+    <table class="head">
+        <tr>
+          <th class="col-xs-1" style="width: 95px">Mã</th>
+          <th class="col-xs-2" style="width: 190px">Họ tên</th>
+          <th class="col-xs-1" style="width: 95px">Ngày sinh</th>
+          <th class="col-xs-1" style="width: 95px">Giới tính</th>
+          <th class="col-xs-1" style="width: 95px">Di động</th>
+          <th class="col-xs-2" style="width: 190px">Email</th>
+          <th class="col-xs-2" style="width: 190px">Địa chỉ</th>
+          <th class="col-xs-1" style="width: 95px">Ngày vào làm</th>
+          <th class="col-xs-1" style="width: 95px">Ngày nghỉ việc</th>
+        </tr>
+    </table>
+  </div>
+  <div class="table-content">
+    <table class="scroll" *ngFor="let employee of employees">
+      <tr>
+        <td class="col-xs-1" style="width: 95px">{{employee.id}}</td>
+        <td class="col-xs-2" style="width: 190px">{{employee.name}}</td>
+        <td class="col-xs-1" style="width: 95px">{{employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+        <td class="col-xs-1" style="width: 95px">{{employee.gender}}</td>
+        <td class="col-xs-1" style="width: 95px">{{employee.phoneNumber}}</td>
+        <td class="col-xs-2" style="width: 190px">{{employee.email}}</td>
+        <td class="col-xs-2" style="width: 190px">{{employee.address}}</td>
+        <td class="col-xs-1" style="width: 95px">{{employee.startDate | date:"dd/MM/yyyy"}}</td>
+        <td class="col-xs-1" style="width: 95px">{{employee.endDate | date:"dd/MM/yyyy"}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="footer">
+  <h2>Footer</h2>
+</div>

@@ -1,0 +1,57 @@
+<div class="flex-container">
+  <div class="header">
+    <h2>Danh sách nhân viên</h2>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="head-table">
+        <table class="head">
+            <tr>
+              <th class="col-xs-1" (click)="sortData('id')">Mã
+                <i *ngIf="sortState.get('id') == 1" class="fa fa-fw fa-sort-up"></i>
+                <i *ngIf="sortState.get('id') == 2" class="fa fa-fw fa-sort-down"></i>
+                <i *ngIf="sortState.get('id') == 0" class="fa fa-fw fa-sort"></i>
+              </th>
+              <th class="col-xs-2">Họ tên</th>
+              <th class="col-xs-1" (click)="sortData('dateOfBirth')">Ngày sinh
+                <i *ngIf="sortState.get('dateOfBirth') == 1" class="fa fa-fw fa-sort-up"></i>
+                <i *ngIf="sortState.get('dateOfBirth') == 2" class="fa fa-fw fa-sort-down"></i>
+                <i *ngIf="sortState.get('dateOfBirth') == 0" class="fa fa-fw fa-sort"></i>
+              </th>
+              <th class="col-xs-1">Giới tính</th>
+              <th class="col-xs-1">Di động</th>
+              <th class="col-xs-2">Email</th>
+              <th class="col-xs-2">Địa chỉ</th>
+              <th class="col-xs-1" (click)="sortData('startDate')">Ngày vào làm
+                <i *ngIf="sortState.get('startDate') == 1" class="fa fa-fw fa-sort-up"></i>
+                <i *ngIf="sortState.get('startDate') == 2" class="fa fa-fw fa-sort-down"></i>
+                <i *ngIf="sortState.get('startDate') == 0" class="fa fa-fw fa-sort"></i>
+              </th>
+              <th class="col-xs-1">Ngày nghỉ việc</th>
+            </tr>
+        </table>
+      </div>
+      <div class="scroll-table">
+        <table *ngFor="let employee of employees">
+          <tr>
+            <td class="col-xs-1">{{employee.id}}</td>
+            <td class="col-xs-2">{{employee.name}}</td>
+            <td class="col-xs-1">{{employee.dateOfBirth | date:"dd/MM/yyyy"}}</td>
+            <td class="col-xs-1">{{employee.gender}}</td>
+            <td class="col-xs-1">{{employee.phoneNumber}}</td>
+            <td class="col-xs-2">{{employee.email}}</td>
+            <td class="col-xs-2">{{employee.address}}</td>
+            <td class="col-xs-1">{{employee.startDate | date:"dd/MM/yyyy"}}</td>
+            <td class="col-xs-1">{{employee.endDate | date:"dd/MM/yyyy"}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <h2>Hết</h2>
+  </div>
+</div>
+

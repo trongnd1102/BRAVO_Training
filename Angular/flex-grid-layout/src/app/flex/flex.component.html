@@ -1,0 +1,221 @@
+<div class="flex-container">
+  <br>
+  <div class="header">
+    <div class="header-1">
+      <ul class="header-list">
+        <li><i class="border-left-dotted"></i><i class="fas fa-bars" style="margin: 5px" (click)="bOpenSideBar = true"></i></li>
+        <li>Dữ liệu<i class="fas fa-caret-down" style="margin: 5px"></i></li>
+        <li>Tuỳ chọn<i class="fas fa-caret-down" style="margin-left: 5px"></i></li>
+        <li><i class="border-left-dotted" style="margin: 5px"></i>
+            <i class="bi bi-file-earmark"></i><i class="fas fa-caret-down" style="margin-left: 5px"></i>
+        </li>
+        <li><i class="border-left-solid"></i><i class="fa-solid fa-folder-open" style="color: #dcb67a"></i></li>
+        <li><i class="border-left-solid"></i><i class="fa-solid fa-floppy-disk"></i></li>
+        <li><i class="border-left-solid"></i><i class="fa-solid fa-rotate-right" style="color: blue"></i></li>
+        <li><i class="border-left-solid"></i><i class="bi bi-file-earmark-pdf" style="color: red"></i></li>
+        <li><i class="border-left-solid"></i><i class="fa-solid fa-arrow-right-from-bracket"></i></li>
+        <li><i class="border-left-solid"></i><i class="fa-solid fa-power-off"></i></li>
+        <li><i class="border-left-solid"></i><i class="bi bi-arrow-left-circle"></i></li>
+        <li><i class="bi bi-arrow-right-circle" style="margin: 5px"></i></li>
+        <li><i class="fa-solid fa-arrow-up"></i></li>
+        <li><i class="border-left-solid"></i> Mẫu in <i class="fa-solid fa-print"></i></li>
+        <li><i class="border-left-solid"></i> Duỵêt</li>
+        <li><i class="border-left-solid"></i> Trừ ứng trước</li>
+        <li><i class="border-left-solid"></i> Đánh số lại</li>
+        <li><i class="border-left-solid"></i> Hoá đơn điện tử <i class="fas fa-caret-down"></i>
+            <i class="border-left-dotted" style="margin-left: 5px"></i></li>
+      </ul>
+    </div>
+    <div class="header-2">
+      <ul class="header-list">
+        <li>Layout <i class="fas fa-caret-down"></i></li>
+    </ul>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="side-bar" #sideBar [hidden]="!bOpenSideBar">
+      <div class="side-bar-button">
+        <ul>
+          <li><i class="fa-solid fa-thumbtack"></i></li>
+          <li><i class="fa-solid fa-xmark" (click)="bOpenSideBar = false"></i></li>
+        </ul>
+      </div>
+
+      <div class="side-bar-option">
+        <div>
+          <div class="side-bar-option-data">1. Nhóm dữ liệu</div>
+          <ul class="list-folder">
+            <li class="folder"><i class="fa-solid fa-folder-open" style="color: #f9e197"></i> Hoá đơn GTGT</li>
+            <li class="folder"><i class="fa-solid fa-folder-open" style="color: #f9e197"></i> Chứng từ của tôi</li>
+            <li class="folder"><i class="fa-solid fa-folder-open" style="color: #f9e197"
+                                        (click)="bShowSideBarOption = !bShowSideBarOption"></i> Chứng từ trong năm</li>
+              <ul [hidden]="!bShowSideBarOption">
+                <li><input type="checkbox"> Tháng 1</li>
+                <li><input type="checkbox"> Tháng 2</li>
+                <li><input type="checkbox"> Tháng 3</li>
+                <li><input type="checkbox"> Tháng 4</li>
+                <li><input type="checkbox"> Tháng 5</li>
+                <li><input type="checkbox"> Tháng 6</li>
+                <li><input type="checkbox"> Tháng 7</li>
+                <li><input type="checkbox"> Tháng 8</li>
+                <li><input type="checkbox"> Tháng 9</li>
+                <li><input type="checkbox"> Tháng 10</li>
+                <li><input type="checkbox"> Tháng 11</li>
+                <li><input type="checkbox"> Tháng 12</li>
+              </ul>
+            <li class="folder"><i class="fa-solid fa-trash" style="color: #0073d0"></i> Dữ liệu đã đình chỉ</li>
+          </ul>
+        </div>
+        <div>
+          <div class="side-bar-option-filter">2. Lọc
+          <div>
+            <i class="border-left-solid" style="border-left: 1px solid #ccc; margin: 5px"></i>
+            <i class="fa-solid fa-plus" style="margin-right: 5px"></i>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-content" [ngStyle]="{'width': bOpenSideBar ? 'calc(100%-200px)' : '100%','height': !bOpenSubTable ? '' : '90vh'}"
+                              [class.main-content-change]="bChangeContentDisplay">
+      <div class="main-table">
+        <div class="main-table-status"><i class="fa-solid fa-angle-right"></i> Đã hoàn thiện</div>
+        <table>
+          <thead>
+            <tr>
+              <th style="width: 75px">Id</th>
+              <th style="width: 75px">ParentId</th>
+              <th style="width: 75px">IsGroup</th>
+              <th style="width: 180px; background-color: #ffe166">Name</th>
+              <th style="width: 100px">ItemTypeName</th>
+              <th style="width: 100px">Code</th>
+              <th style="width: 75px">Unit</th>
+              <th style="width: 100px">ItemGroupCode</th>
+              <th style="width: 100px">BranchCode</th>
+              <th style="width: 75px">IsActive</th>
+              <th style="width: 75px">CreatedBy</th>
+              <th style="width: 150px">CreatedAt</th>
+              <th style="width: 75px">ModifiedBy</th>
+              <th style="width: 150px">ModifiedAt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products" (click)="onSelect(product)" [class.select-main-table-row]="product == selectProduct">
+              <td style="width: 75px">{{product.Id}}</td>
+              <td style="width: 75px">{{product.ParentId}}</td>
+              <td style="width: 75px">{{product.IsGroup}}</td>
+              <td style="width: 180px">{{product.Name}}</td>
+              <td style="width: 100px">{{product.ItemTypeName}}</td>
+              <td style="width: 100px">{{product.Code}}</td>
+              <td style="width: 75px">{{product.Unit}}</td>
+              <td style="width: 100px">{{product.ItemGroupCode}}</td>
+              <td style="width: 100px">{{product.BranchCode}}</td>
+              <td style="width: 75px">{{product.IsActive}}</td>
+              <td style="width: 75px">{{product.CreatedBy}}</td>
+              <td style="width: 150px">{{product.CreatedAt}}</td>
+              <td style="width: 75px">{{product.ModifiedBy}}</td>
+              <td style="width: 150px">{{product.ModifiedAt}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="sub-table" [class.sub-table-change]="bChangeContentDisplay">
+        <div class="sub-table-option">
+          <div class="sub-table-option-button">
+            <div style="display: flex">
+              <div style="width: 115"><button>Chi tiết hoá đơn</button></div>
+              <div style="width: 155"><button>Thanh toán ứng trước</button></div>
+              <div style="width: 80"><button>Công việc</button></div>
+              <div style="width: 160"><button>Chiết khấu thương mại</button></div>
+              <div style="width: 120"><button>Mẫu in chứng từ</button></div>
+              <div style="width: 115"><button>Duyệt chứng từ</button></div>
+            </div>
+          </div>
+
+          <div class="sub-table-option-display">
+            <ul class="list-option">
+              <li><i class="bi bi-square-half" style="margin-right: 5px"
+                                         (click)="bChangeContentDisplay = !bChangeContentDisplay"></i></li>
+              <li><i class="fa-solid fa-window-minimize" (click)="bOpenSubTable = !bOpenSubTable"></i></li>
+            </ul>
+          </div>
+        </div>
+        <div [hidden]="bOpenSubTable">
+          <div class="sub-list-table" [class.sub-list-table-change]="bChangeContentDisplay">
+            <div class="sub-table-1" style="overflow: auto">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 300px">Tên vật tư, hàng hoá</th>
+                    <th style="width: 60px">Đvt</th>
+                    <th style="width: 65px">Tk nợ</th>
+                    <th style="width: 70px">Tk có</th>
+                    <th style="width: 75px">Kho</th>
+                    <th style="width: 100px">Số lượng</th>
+                    <th style="width: 100px">Đơn giá</th>
+                    <th style="width: 100px">Thành tiền</th>
+                    <th style="width: 100px">Tự áp giá</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="cursor:pointer" (click)="bOpenSubTable2 = !bOpenSubTable2"
+                      [ngStyle]="{'background-color': bOpenSubTable2 ? '#ffffff' : '#cce8ff'}">
+                    <td>Test</td>
+                    <td>Cái</td>
+                    <td>13111</td>
+                    <td>5111</td>
+                    <td>KVULA</td>
+                    <td>1.000</td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="checkbox" style="margin-left: 15px" checked></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="sub-table-2" style="overflow: auto" [hidden]="bOpenSubTable2" [class.sub-table-2-change]="bChangeContentDisplay">
+              <table>
+                <thead>
+                  <tr>
+                    <th style="width: 100px; background-color: #ffe166">Số lượng</th>
+                    <th style="width: 100px">Vị trí</th>
+                    <th style="width: 250px">Tên vị trí</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="background-color: #cce8ff">
+                    <td>1.000</td>
+                    <td>VTVULA</td>
+                    <td>Vị trí Test</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-1">
+      <ul class="footer-list">
+          <li> Tổng cộng: 24/989</li>|
+          <li><i></i>Đã tạo: {{ currentTime | date:"dd/MM/yyyy hh:mm a" }}</li>|
+          <li><i></i>Đã sửa: {{ currentTime | date:"dd/MM/yyyy hh:mm a" }}</li>
+      </ul>
+    </div>
+    <div class="footer-2">
+      <ul class="footer-list">
+          <li><i class="fa-solid fa-database"></i> Default</li>
+          <li style="background-color: #fff8dc"><i></i>Văn phòng Công ty Cổ phần BRAVO
+          </li>
+          <li><i></i>2027</li>
+          <li><i></i><i class="fa-solid fa-user"></i> Admin</li>
+          <li><i></i><i class="fa-solid fa-bell"></i> 12</li>
+      </ul>
+  </div>
+  </div>
+</div>

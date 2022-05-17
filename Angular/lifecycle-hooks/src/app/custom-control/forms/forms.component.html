@@ -1,0 +1,50 @@
+<h2>Custom Control Example</h2>
+
+<div class="flex-container">
+  <div class="input">
+
+    <div class="switchs">
+      <div class="button-output">
+        <button class="switchOutput" (click)="switchOutput()">Switch Output Update</button>
+      </div>
+      <div class="button-input">
+        <button class="switchput" (click)="switchInput()">Switch Input Type</button>
+      </div>
+      <div class="case">
+        <input type="radio" id="none" name="setCase" (click)="setCase('none')">
+        <label>None</label>
+        <input type="radio" id="capitalize" name="setCase" (click)="setCase('capitalize')">
+        <label>Capitalize</label><br>
+        <input type="radio" id="uppercase" name="setCase" (click)="setCase('uppercase')">
+        <label>Uppercase</label>
+      </div>
+    </div>
+
+    <div class="list-form">
+      <div class="forms">
+        <form [formGroup]="form">
+          <app-inputs *ngIf="updateOutput == 1" formControlName="Content1" [style]="style" [multiLine]="multiLine"></app-inputs>
+          <app-inputs *ngIf="updateOutput == 2" formControlName="Content2" [style]="style" [multiLine]="multiLine"></app-inputs>
+          <app-inputs *ngIf="updateOutput == 3" formControlName="Content3" [style]="style" [multiLine]="multiLine"></app-inputs>
+              <button *ngIf="updateOutput == 3" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="output">
+    <div class="content1">
+      <h3>Content of change:</h3>
+      <p>{{Content1.value}}</p>
+    </div>
+    <div class="content2">
+      <h3>Content of blur:</h3>
+      <p>{{Content2.value}}</p>
+    </div>
+    <div class="content3">
+      <h3>Content of submit:</h3>
+      <p>{{Content3.value}}</p>
+    </div>
+  </div>
+</div>
+

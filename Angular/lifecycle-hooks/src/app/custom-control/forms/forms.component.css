@@ -1,0 +1,36 @@
+.flex-container {
+  display: flex;
+  background-color: dodgerblue;
+}
+
+.flex-container div {
+  margin: 20px;
+  background-color: aqua;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.switchs {
+  display: flex;
+  flex-direction: column;
+}
+
+.switchs div {
+  margin: 10px;
+}
+
+.output {
+  display: flex;
+  background-color: slategray;
+  width: 70%;
+  white-space: pre;
+}
+
+.output div {
+  margin: 10px;
+  background-color: white;
+  width: 33%;
+}

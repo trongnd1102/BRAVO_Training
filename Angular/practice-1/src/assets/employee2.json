@@ -1,0 +1,167 @@
+[
+  {
+    "id": "CHANHBT1",
+    "name": "Bùi Thị Chanh",
+    "dateOfBirth": "1987-08-14",
+    "gender": "Nữ",
+    "phoneNumber": "0904442123",
+    "email": "ChanhBt@bravovp.com.vn",
+    "address": "Đại Cương, Kim Bảng, Hà Nam",
+    "startDate": "2016-04-06",
+    "endDate": "2018-02-28"
+  },
+  {
+    "id": "LANBT",
+    "name": "Bùi Thị Lan",
+    "dateOfBirth": "1996-02-27",
+    "gender": "Nữ",
+    "phoneNumber": "01675966061",
+    "email": "LanBT@bravotm.com.vn",
+    "address": "Thôn Trung, Duy Minh, Duy Tiên, Hà Nam",
+    "startDate": "2017-02-01",
+    "endDate": ""
+  },
+  {
+    "id": "MOBT",
+    "name": "Bùi Thị Mơ",
+    "dateOfBirth": "1993-03-19",
+    "gender": "Nữ",
+    "phoneNumber": "0974387576",
+    "email": "MoBT@bravotm.com.vn",
+    "address": "Thôn Nội, Bạch Thượng, Duy Tiên, Hà Nam",
+    "startDate": "2017-01-02",
+    "endDate": ""
+  },
+  {
+    "id": "BINHHT",
+    "name": "Hoàng Thuỷ Bình",
+    "dateOfBirth": "1990-07-26",
+    "gender": "Nữ",
+    "phoneNumber": "0904442456",
+    "email": "Binhht@bravotm.com.vn",
+    "address": "Xóm 7, Diễn Thái, Diễn Châu, Nghệ An",
+    "startDate": "2016-04-02",
+    "endDate": "2019-18-08"
+  },
+  {
+    "id": "TUNH",
+    "name": "Nguyễn Hữu Tú",
+    "dateOfBirth": "1990-02-01",
+    "gender": "Nam",
+    "phoneNumber": "0986249234",
+    "email": "tunh@gmail.com",
+    "address": "Chương Dương, Thường Tín, Hà Nội",
+    "startDate": "2019-04-01",
+    "endDate": ""
+  },
+  {
+    "id": "HANHNM",
+    "name": "Nguyễn Minh Hạnh",
+    "dateOfBirth": "1985-05-12",
+    "gender": "Nữ",
+    "phoneNumber": "01682883444",
+    "email": "HanhNM@bravotm.com.vn",
+    "address": "Thị xã Yên Bái, Yên Bái",
+    "startDate": "2015-01-08",
+    "endDate": ""
+  },
+  {
+    "id": "HOANT3",
+    "name": "Nguyễn Thị Hoa",
+    "dateOfBirth": "1985-05-12",
+    "gender": "Nữ",
+    "phoneNumber": "01682883555",
+    "email": "HoaNT3@bravotm.com.vn",
+    "address": "Thị xã Yên Bái, Yên Bái",
+    "startDate": "2020-01-01",
+    "endDate": ""
+  },
+  {
+    "id": "NGANTT",
+    "name": "Nguyễn Thị Thanh Nga",
+    "dateOfBirth": "1991-10-05",
+    "gender": "Nữ",
+    "phoneNumber": "0977438398",
+    "email": "NgaNTT@bravotm.com.vn",
+    "address": "Lưu Thượng, Phú Túc, Phú Xuyên, Hà Nội",
+    "startDate": "2017-01-10",
+    "endDate": "2018-03-31"
+  },
+  {
+    "id": "LONGNV",
+    "name": "Nguyễn Văn Long",
+    "dateOfBirth": "1991-10-28",
+    "gender": "Nam",
+    "phoneNumber": "01687671538",
+    "email": "LongNV@bravotm.com.vn",
+    "address": "Cầu Giang, Duy Tiên, Hà Nam",
+    "startDate": "2016-07-23",
+    "endDate": ""
+  },
+  {
+    "id": "HIEUTT",
+    "name": "Trần Trung Hiếu",
+    "dateOfBirth": "1989-02-23",
+    "gender": "Nam",
+    "phoneNumber": "0982201999",
+    "email": "hieutt@bravotm.com.vn",
+    "address": "Đông Bình, Hùng Tiến, Mỹ Đức, Hà Nội",
+    "startDate": "2016-12-01",
+    "endDate": ""
+  },
+  {
+    "id": "HOANGND",
+    "name": "Ngô Duy Hoàng",
+    "dateOfBirth": "1985-05-12",
+    "gender": "Nam",
+    "phoneNumber": "0982201777",
+    "email": "HoangND@bravotm.com.vn",
+    "address": "Thị xã Yên Bái, Yên Bái",
+    "startDate": "2015-08-01",
+    "endDate": ""
+  },
+  {
+    "id": "HOANT",
+    "name": "Ngô Thị Hoa",
+    "dateOfBirth": "1992-10-08",
+    "gender": "Nữ",
+    "phoneNumber": "0982201666",
+    "email": "Hoant@gmail.com",
+    "address": "Cộng Hoà, Giao Thuỷ, Nam Định",
+    "startDate": "2016-01-01",
+    "endDate": "2016-12-15"
+  },
+  {
+    "id": "HONGNT",
+    "name": "Ngô Thị Hồng",
+    "dateOfBirth": "1990-08-10",
+    "gender": "Nữ",
+    "phoneNumber": "0982201444",
+    "email": "Hongnt@gmail.com",
+    "address": "Tứ Hiệp, Thanh Trì, Hà Nội",
+    "startDate": "2016-01-01",
+    "endDate": "2017-12-01"
+  },
+  {
+    "id": "DINHNV",
+    "name": "Nguyễn Văn Định",
+    "dateOfBirth": "1984-03-15",
+    "gender": "Nam",
+    "phoneNumber": "01682883778",
+    "email": "Dinhnv@bravovp.com.vn",
+    "address": "Đồng Cả, Tân Dân, Phú Xuyên, Hà Nội",
+    "startDate": "2011-12-10",
+    "endDate": "2018-03-31"
+  },
+  {
+    "id": "MAIDH",
+    "name": "Đào Hoàng Mai",
+    "dateOfBirth": "1991-05-25",
+    "gender": "Nữ",
+    "phoneNumber": "0381906328",
+    "email": "Maidh@bravovp.com.vn",
+    "address": "Khương Mai, Thanh Xuân, Hà Nội",
+    "startDate": "2014-09-07",
+    "endDate": "2019-11-18"
+  }
+]
