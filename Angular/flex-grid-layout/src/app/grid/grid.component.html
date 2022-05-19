@@ -1,14 +1,21 @@
-<div class="grid-container">
-  <wj-collection-view-navigator
-        headerFormat="Page {currentPage:n0} of {pageCount:n0}"
-        [byPage]="true"
+<div class="header">
+  <div class="filter" style="width: 30vw;">
+    <div class="search">
+      <input (input)="filter($event)" class="form-control" placeholder="Unit Filter">
+    </div>
+  </div>
+  <div class="paging">
+    <wj-collection-view-navigator headerFormat="Page {currentPage:n0} of {pageCount:n0}" [byPage]="true"
         [cv]="products">
     </wj-collection-view-navigator>
+  </div>
+</div>
+
+<div class="grid-container">
   <!-- grid table -->
-  <wj-flex-grid [itemsSource]="products" #theGrid
-        headersVisibility="Column"
-        [alternatingRowStep]="0"
-        (loadedRows)="onloadedRows(theGrid)">
+  <wj-flex-grid [itemsSource]="products" #grid
+      [showMarquee]="true"
+      (loadedRows)="onloadedRows(grid)">
     <wj-flex-grid-column [header]="'Id'" [binding]="'Id'" [width]="100"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'ParentId'" [binding]="'ParentId'" [width]="100"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'IsGroup'" [binding]="'IsGroup'" [width]="100"></wj-flex-grid-column>

@@ -1,10 +1,56 @@
-:host >>> .wj-cell.service {
-  background-color:aqua;
-}
-:host >>> .wj-cell.product {
-  background-color: magenta;
+.header {
+  display: flex;
+  justify-content: space-between;
 }
 
-:host >>> .wj-cell.supplies {
-  background-color: lime;
+.wj-flexgrid {
+  max-height: 90vh;
+}
+
+:host >>> .wj-cell.unit-bang {
+  font-weight: bold;
+  color: #fb0202;
+  background-color: hsl(0, 100%, 90%);
+}
+
+:host >>> .wj-cell.unit-cai {
+  font-weight: bold;
+  color: #ffaa00;
+  background-color: hsl(45, 100%, 90%);
+}
+
+:host >>> .wj-cell.unit-chuyen {
+  font-weight: bold;
+  color: #00ff15;
+  background-color: hsl(105, 100%, 90%);
+}
+
+:host >>> .wj-cell.unit-pcs {
+  font-weight: bold;
+  color: #00bfff;
+  background-color: hsl(175, 100%, 90%);
+}
+
+:host >>> .wj-cell.unit-chiec {
+  font-weight: bold;
+  color: #0008ff;
+  background-color: hsl(245, 100%, 90%);
+}
+
+:host >>> .wj-cell.unit-bo {
+  font-weight: bold;
+  color: #d400ff;
+  background-color: hsl(305, 100%, 90%);
+}
+
+:host >>> .wj-cell.unit-cay {
+  font-weight: bold;
+  color: #ff0062;
+  background-color: hsl(335, 100%, 90%);
+}
+
+:host >>> .wj-marquee {
+  transition: all 0.6s;
+  background-color: rgba(53, 231, 255, 0.2);
+  z-index: 0;
 }
