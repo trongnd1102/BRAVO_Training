@@ -1,18 +1,27 @@
 <div class="header">
-  <!-- <div class="sorting">
-    <label style="margin: 5px">Sort Option:
-      <wj-combo-box #sort
-          [itemsSource]="allowSortingOptions"
-          [selectedIndex]="allowSorting"
-          (selectedIndexChanged)="setAllowSorting(sort.selectedIndex)">
-      </wj-combo-box>
-    </label>
-  </div> -->
-  <div class="search">
-    <label style="margin: 5px">Search:
-      <wj-flex-grid-search [placeholder]="'FlexGridSearch'" [grid]="grid">
-      </wj-flex-grid-search>
-    </label>
+  <div class="menu">
+    <div class="sort" style="margin: 5px">
+        <wj-combo-box #cmb
+            [itemsSource]="allowSortingOptions"
+            [selectedIndex]="allowSorting"
+            (selectedIndexChanged)="setAllowSorting(cmb.selectedIndex)">
+        </wj-combo-box>
+    </div>
+    <div class="filter">
+      <div class="input-group" style="margin: 5px">
+        <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+        <input (input)="filter($event)" class="form-control" placeholder="Unit Filter">
+    </div>
+    </div>
+    <div class="search" style="margin: 5px">
+        <wj-flex-grid-search [placeholder]="'Search...'" [grid]="grid">
+        </wj-flex-grid-search>
+    </div>
+  </div>
+  <div class="paging" style="margin: 5px">
+    <wj-collection-view-navigator headerFormat="Page {currentPage:n0} of {pageCount:n0}" [byPage]="true"
+        [cv]="products">
+    </wj-collection-view-navigator>
   </div>
 </div>
 
@@ -21,7 +30,8 @@
   <wj-flex-grid [itemsSource]="products" #grid
       [showMarquee]="true"
       [allowSorting]="allowSorting"
-      (loadedRows)="onloadedRows(grid)">
+      (loadedRows)="onloadedRows(grid)"
+      (initialized)="initializeGrid(grid)">
     <wj-flex-grid-column [header]="'Id'" [binding]="'Id'" [width]="100"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'ParentId'" [binding]="'ParentId'" [width]="100"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'IsGroup'" [binding]="'IsGroup'" [width]="100"></wj-flex-grid-column>
@@ -29,19 +39,13 @@
     <wj-flex-grid-column [header]="'ItemTypeName'" [binding]="'ItemTypeName'" [width]="150"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'Code'" [binding]="'Code'" [width]="120"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'Unit'" [binding]="'Unit'" [width]="100"></wj-flex-grid-column>
-    <wj-flex-grid-column [header]="'ItemGroupCode'" [binding]="'ItemGroupCode'" [width]="120"></wj-flex-grid-column>
-    <wj-flex-grid-column [header]="'BranchCode'" [binding]="'BranchCode'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'ItemGroupCode'" [binding]="'ItemGroupCode'" [width]="150"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'BranchCode'" [binding]="'BranchCode'" [width]="120"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'IsActive'" [binding]="'IsActive'" [width]="100"></wj-flex-grid-column>
-    <wj-flex-grid-column [header]="'CreatedBy'" [binding]="'CreatedBy'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'CreatedBy'" [binding]="'CreatedBy'" [width]="120"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'CreatedAt'" [binding]="'CreatedAt'" [width]="200"></wj-flex-grid-column>
-    <wj-flex-grid-column [header]="'ModifiedBy'" [binding]="'ModifiedBy'" [width]="100"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'ModifiedBy'" [binding]="'ModifiedBy'" [width]="120"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'ModifiedAt'" [binding]="'ModifiedAt'" [width]="200"></wj-flex-grid-column>
-    <wj-flex-grid-column [header]="'SelectKey wibkaw'" [binding]="'_SelectKey__wibkaw'" [width]="150"></wj-flex-grid-column>
-    <wj-flex-grid-filter></wj-flex-grid-filter>
+    <wj-flex-grid-column [header]="'SelectKey wibkaw'" [binding]="'_SelectKey__wibkaw'" [width]="180"></wj-flex-grid-column>
   </wj-flex-grid>
-  <div class="paging">
-    <wj-collection-view-navigator headerFormat="Page {currentPage:n0} of {pageCount:n0}" [byPage]="true"
-        [cv]="products">
-    </wj-collection-view-navigator>
-  </div>
 </div>

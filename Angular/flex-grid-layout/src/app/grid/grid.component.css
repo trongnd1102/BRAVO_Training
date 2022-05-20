@@ -3,8 +3,18 @@
   justify-content: space-between;
 }
 
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
 .wj-flexgrid {
-  max-height: 90vh;
+  max-height: calc(100vh - 227px);
+}
+
+:host >>> .wj-cell.wj-header .wj-sort-index {
+  display: none;
 }
 
 :host >>> .wj-cell.unit-bang {
