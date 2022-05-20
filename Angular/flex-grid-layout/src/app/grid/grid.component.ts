@@ -3,6 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import { CollectionView }  from '@grapecity/wijmo';
 import * as wjGrid from '@grapecity/wijmo.grid';
 import { AllowSorting }from '@grapecity/wijmo.grid';
+import { WjGridFilterModule } from '@grapecity/wijmo.angular2.grid.filter';
+import { WjGridSearchModule } from '@grapecity/wijmo.angular2.grid.search';
 
 @Component({
   selector: 'app-grid',
@@ -28,13 +30,7 @@ export class GridComponent implements OnInit {
     })
   }
 
-  filter(pFilter: any) {
-    let filter = (<HTMLInputElement>pFilter.target).value.toLowerCase();
-    this.grid.collectionView.filter = (item: any) => {
-        return filter.length == 0 || item.Unit.toLowerCase().indexOf(filter) > -1
-    }
-  }
-
+  // Styling rows
   onloadedRows(pGrid: wjGrid.FlexGrid) {
     for (var i = 0; i < pGrid.rows.length; i++) {
       var row = pGrid.rows[i];
@@ -58,11 +54,20 @@ export class GridComponent implements OnInit {
         case 'Bộ':
           row.cssClass = 'unit-bo';
           break;
-        case 'Cây':
-          row.cssClass = 'unit-cay';
+        case 'Lon':
+          row.cssClass = 'unit-lon';
           break;
       }
     }
+  }
+
+  allowSorting = AllowSorting.None;
+  allowSortingOptions = 'None,SingleColumn,MultiColumn'.split(',');
+
+  // change the allowSorting value
+  setAllowSorting(value: number) {
+      this.products.sortDescriptions.clear(); // remove current sort
+      this.allowSorting = value; // apply the new setting
   }
 
 }

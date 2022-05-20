@@ -1,13 +1,18 @@
 <div class="header">
-  <div class="filter" style="width: 30vw;">
-    <div class="search">
-      <input (input)="filter($event)" class="form-control" placeholder="Unit Filter">
-    </div>
-  </div>
-  <div class="paging">
-    <wj-collection-view-navigator headerFormat="Page {currentPage:n0} of {pageCount:n0}" [byPage]="true"
-        [cv]="products">
-    </wj-collection-view-navigator>
+  <!-- <div class="sorting">
+    <label style="margin: 5px">Sort Option:
+      <wj-combo-box #sort
+          [itemsSource]="allowSortingOptions"
+          [selectedIndex]="allowSorting"
+          (selectedIndexChanged)="setAllowSorting(sort.selectedIndex)">
+      </wj-combo-box>
+    </label>
+  </div> -->
+  <div class="search">
+    <label style="margin: 5px">Search:
+      <wj-flex-grid-search [placeholder]="'FlexGridSearch'" [grid]="grid">
+      </wj-flex-grid-search>
+    </label>
   </div>
 </div>
 
@@ -15,6 +20,7 @@
   <!-- grid table -->
   <wj-flex-grid [itemsSource]="products" #grid
       [showMarquee]="true"
+      [allowSorting]="allowSorting"
       (loadedRows)="onloadedRows(grid)">
     <wj-flex-grid-column [header]="'Id'" [binding]="'Id'" [width]="100"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'ParentId'" [binding]="'ParentId'" [width]="100"></wj-flex-grid-column>
@@ -31,5 +37,11 @@
     <wj-flex-grid-column [header]="'ModifiedBy'" [binding]="'ModifiedBy'" [width]="100"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'ModifiedAt'" [binding]="'ModifiedAt'" [width]="200"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'SelectKey wibkaw'" [binding]="'_SelectKey__wibkaw'" [width]="150"></wj-flex-grid-column>
+    <wj-flex-grid-filter></wj-flex-grid-filter>
   </wj-flex-grid>
+  <div class="paging">
+    <wj-collection-view-navigator headerFormat="Page {currentPage:n0} of {pageCount:n0}" [byPage]="true"
+        [cv]="products">
+    </wj-collection-view-navigator>
+  </div>
 </div>
