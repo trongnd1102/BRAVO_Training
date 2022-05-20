@@ -17,7 +17,7 @@
   display: none;
 }
 
-:host >>> .wj-cell.unit-bang {
+:host >>> .wj-cell.unit-tuyp {
   background-color: hsl(0, 100%, 90%);
 }
 
@@ -25,7 +25,7 @@
   background-color: hsl(45, 100%, 90%);
 }
 
-:host >>> .wj-cell.unit-chuyen {
+:host >>> .wj-cell.unit-lo {
   background-color: hsl(105, 100%, 90%);
 }
 
@@ -37,7 +37,7 @@
   background-color: hsl(245, 100%, 90%);
 }
 
-:host >>> .wj-cell.unit-lon {
+:host >>> .wj-cell.unit-chai {
   background-color: hsl(290, 100%, 90%);
 }
 

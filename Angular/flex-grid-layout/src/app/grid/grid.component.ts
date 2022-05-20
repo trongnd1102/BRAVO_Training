@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CollectionView }  from '@grapecity/wijmo';
 import { AllowSorting }from '@grapecity/wijmo.grid';
-// import * as productData from '../../assets/product.json'
+
 import * as wjGrid from '@grapecity/wijmo.grid';
 
 @Component({
@@ -14,7 +14,6 @@ export class GridComponent implements OnInit {
   @ViewChild('grid', { static: true }) grid!: wjGrid.FlexGrid;
 
   products: any;
-  datas: any;
 
   constructor(private httpClient: HttpClient) {
     this._getData()
@@ -45,14 +44,14 @@ export class GridComponent implements OnInit {
       var row = pGrid.rows[i];
       var item = row.dataItem;
       switch(item.Unit) {
-        case 'Bảng':
-          row.cssClass = 'unit-bang';
+        case 'Tuýp':
+          row.cssClass = 'unit-tuyp';
           break;
         case 'Cái':
           row.cssClass = 'unit-cai';
           break;
-        case 'Chuyến':
-          row.cssClass = 'unit-chuyen';
+        case 'Lọ':
+          row.cssClass = 'unit-lo';
           break;
         case 'PCS':
           row.cssClass = 'unit-pcs';
@@ -63,8 +62,8 @@ export class GridComponent implements OnInit {
         case 'Bộ':
           row.cssClass = 'unit-bo';
           break;
-        case 'Lon':
-          row.cssClass = 'unit-lon';
+        case 'Chai':
+          row.cssClass = 'unit-chai';
           break;
       }
     }
@@ -85,6 +84,6 @@ export class GridComponent implements OnInit {
     this.grid.collectionView.filter = (item: any) => {
         return filter.length == 0 || item.Unit.toLowerCase().indexOf(filter) > -1
     }
-}
+  }
 
 }
