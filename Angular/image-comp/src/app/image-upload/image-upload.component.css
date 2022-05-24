@@ -6,3 +6,19 @@ input[type=file] {
   width: 30vh;
   height: 20vh;
 }
+
+.option-list{
+  margin: 0;
+  padding: 0;
+  height: 30px;
+}
+
+.option-list li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.option-list .border-left-solid {
+  border-left: 1px solid #ccc;
+  margin: 5px;
+}
