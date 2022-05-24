@@ -22,7 +22,11 @@
 }
 
 :host >>> .wj-cell.unit-cai {
-  background-color: hsl(45, 100%, 90%);
+  background-color: hsl(30, 100%, 90%);
+}
+
+:host >>> .wj-cell.unit-hop {
+  background-color: hsl(60, 100%, 90%);
 }
 
 :host >>> .wj-cell.unit-lo {

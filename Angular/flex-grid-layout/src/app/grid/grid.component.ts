@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { CollectionView }  from '@grapecity/wijmo';
-import { AllowSorting }from '@grapecity/wijmo.grid';
 
 import * as wjGrid from '@grapecity/wijmo.grid';
+import * as wjCore from '@grapecity/wijmo';
 
 @Component({
   selector: 'app-grid',
@@ -11,31 +11,30 @@ import * as wjGrid from '@grapecity/wijmo.grid';
   styleUrls: ['./grid.component.css']
 })
 export class GridComponent implements OnInit {
-  @ViewChild('grid', { static: true }) grid!: wjGrid.FlexGrid;
+  @ViewChild('grid1', { static: true }) grid1!: wjGrid.FlexGrid;
 
   products: any;
 
   constructor(private httpClient: HttpClient) {
-    this._getData()
   }
 
   ngOnInit(): void {
+    console.log(this.grid1)
+    this.getData();
+    // luôn khởi tạo trước khi binding
   }
 
-  private _getData() {
+  getData () {
     // get data from JSON file
     this.httpClient.get("assets/product.json").subscribe((data) => {
-      // create a paged CollectionView with 12 items per page
+    // create a paged CollectionView with 100 items per page
       this.products = new CollectionView(data, {
         pageSize: 100,
         sortDescriptions: [ 'Unit', 'ItemGroupCode' ],
         groupDescriptions: [ 'Unit', 'ItemGroupCode' ]
       });
+      this.grid1.itemsSource = this.products
     })
-  }
-
-  initializeGrid(grid: wjGrid.FlexGrid) {
-    grid.select(new wjGrid.CellRange(0,0), true);
   }
 
   // Styling rows
@@ -65,24 +64,18 @@ export class GridComponent implements OnInit {
         case 'Chai':
           row.cssClass = 'unit-chai';
           break;
+        case 'Hộp':
+          row.cssClass = 'unit-hop';
+          break;
       }
     }
   }
 
-  allowSorting = AllowSorting.MultiColumn;
-  allowSortingOptions = 'None,SingleColumn,MultiColumn'.split(',');
-
-  // change the allowSorting value
-  setAllowSorting(value: number) {
-      this.products.sortDescriptions.clear(); // remove current sort
-      this.allowSorting = value; // apply the new setting
-  }
-
-  // filter by country
+  // filter by Unit
   filter(e: any) {
     let filter = (<HTMLInputElement>e.target).value.toLowerCase();
-    this.grid.collectionView.filter = (item: any) => {
-        return filter.length == 0 || item.Unit.toLowerCase().indexOf(filter) > -1
+    this.grid1.collectionView.filter = (item: any) => {
+      return filter.length == 0 || item.Unit.toLowerCase().indexOf(filter) > -1
     }
   }
 

@@ -1,12 +1,5 @@
 <div class="header">
   <div class="menu">
-    <div class="sort" style="margin: 5px">
-        <wj-combo-box #cmb
-            [itemsSource]="allowSortingOptions"
-            [selectedIndex]="allowSorting"
-            (selectedIndexChanged)="setAllowSorting(cmb.selectedIndex)">
-        </wj-combo-box>
-    </div>
     <div class="filter">
       <div class="input-group" style="margin: 5px">
         <div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
@@ -14,7 +7,7 @@
     </div>
     </div>
     <div class="search" style="margin: 5px">
-        <wj-flex-grid-search [placeholder]="'Search...'" [grid]="grid">
+        <wj-flex-grid-search [placeholder]="'Search...'" [grid]="grid1" [delay]="100">
         </wj-flex-grid-search>
     </div>
   </div>
@@ -25,14 +18,12 @@
   </div>
 </div>
 
-<div class="grid-container">
-  <!-- grid table -->
-  <wj-flex-grid [itemsSource]="products" #grid
+<div class="grid-table">
+  <wj-flex-grid #grid1
       [showMarquee]="true"
-      [allowSorting]="allowSorting"
-      (loadedRows)="onloadedRows(grid)"
-      (initialized)="initializeGrid(grid)">
-    <wj-flex-grid-column [header]="'Id'" [binding]="'Id'" [width]="100"></wj-flex-grid-column>
+      [allowSorting]="'MultiColumn'"
+      (loadedRows)="onloadedRows(grid1)">
+    <!-- <wj-flex-grid-column [header]="'Id'" [binding]="'Id'" [width]="100"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'ParentId'" [binding]="'ParentId'" [width]="100"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'IsGroup'" [binding]="'IsGroup'" [width]="100"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'Name'" [binding]="'Name'" [width]="300"></wj-flex-grid-column>
@@ -46,6 +37,6 @@
     <wj-flex-grid-column [header]="'CreatedAt'" [binding]="'CreatedAt'" [width]="200"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'ModifiedBy'" [binding]="'ModifiedBy'" [width]="120"></wj-flex-grid-column>
     <wj-flex-grid-column [header]="'ModifiedAt'" [binding]="'ModifiedAt'" [width]="200"></wj-flex-grid-column>
-    <wj-flex-grid-column [header]="'SelectKey wibkaw'" [binding]="'_SelectKey__wibkaw'" [width]="180"></wj-flex-grid-column>
+    <wj-flex-grid-column [header]="'SelectKey wibkaw'" [binding]="'_SelectKey__wibkaw'" [width]="180"></wj-flex-grid-column> -->
   </wj-flex-grid>
 </div>
