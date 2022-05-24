@@ -1,3 +1,8 @@
 input[type=file] {
   display: none;
 }
+
+.image-preview {
+  width: 30vh;
+  height: 20vh;
+}

@@ -3,7 +3,10 @@
     <i class="fa-solid fa-angle-down" ></i>
   </button>
 
-  <wj-popup #ImagePopup [owner]="btnShowPopup" [showTrigger]="'Click'" [hideTrigger]="'Click'">
+  <wj-popup #ImagePopup class="popover"
+      [owner]="btnShowPopup"
+      [showTrigger]="'Click'"
+      [hideTrigger]="'Blur'">
     <app-image-upload></app-image-upload>
   </wj-popup>
 </div>
