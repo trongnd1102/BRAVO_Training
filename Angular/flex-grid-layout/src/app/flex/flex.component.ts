@@ -24,7 +24,7 @@ export class FlexComponent implements OnInit {
     this.selectProduct = pProduct;
   }
 
-  bOpenSideBar = false;
+  bOpenSideBar = true;
   bShowSideBarOption = false;
   bOpenSubTable = false;
   bOpenSubTable2 = false;

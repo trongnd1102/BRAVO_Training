@@ -1,9 +1,16 @@
+.flex-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
 /*
  * Header CSS
  */
 .header {
   display: flex;
-  height: 35px;
+  flex-grow: 1;
+  height: 30px;
   justify-content: space-between;
   background-color: #f8f8f8;
 }
@@ -30,21 +37,26 @@
 /*
  * Content CSS
  */
- .content {
+.content {
   display: flex;
+  flex: 1 0 calc(100vh - 228px);
+  border: 2px solid green;
 }
 
 .side-bar {
-  width: 250px;
+  flex: 1 0 250px;
   background-color: #eaecf5;
+  border: 2px solid red;
 }
 
 .main-content {
-  height: 90vh;
+  /* flex: 2; */
+  /* height: 90vh; */
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   overflow-x: auto;
+  border: 2px solid blue;
 }
 
 .main-content-change {
@@ -79,7 +91,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: calc(90vh - 20px);
+  /* height: calc(70vh - 20px); */
 }
 
 .side-bar-option-data {
@@ -128,6 +140,7 @@
  */
 .main-table-status {
   background-color: #f0f0f0;
+  width: 100%;
   height: 20px;
 }
 
@@ -137,8 +150,10 @@
 }
 
 .main-table {
-  height: 90vh;
+  height: 50vh;
+  flex: 2 0 40vh;
   overflow-y: auto;
+  border: 2px solid purple;
 }
 
 .main-table table {
@@ -203,13 +218,18 @@
 /*
  * Sub Table CSS
  */
+.sub-table {
+  flex-grow: 1;
+  border: 2px solid orange;
+}
+
 .sub-table-change {
   width: 25%;
 }
 
 .sub-list-table {
   display: flex;
-  height: 30vh;
+  height: 25vh;
 }
 
 .sub-list-table-change {
@@ -314,6 +334,7 @@
  */
 .footer {
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
   background-color: #f1f1f1;
 }
