@@ -1,1 +1,10 @@
-<p>popup works!</p>
+<div class="image-popup">
+  <button #btnShowPopup class="btn btn-primary">
+    <i class="fa-solid fa-angle-down" ></i>
+  </button>
+
+  <wj-popup #ImagePopup [owner]="btnShowPopup" [showTrigger]="'Click'" [hideTrigger]="'Click'">
+    <app-image-upload></app-image-upload>
+  </wj-popup>
+</div>
+
