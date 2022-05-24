@@ -1,4 +1,9 @@
 <div class="image-preview">
-  <img [src]="url" width="100" height="100">
-  <input type="file" (change)="selectImage($event)">
+  <img [src]="url" width="10%" height="10%">
+</div>
+<div class="option">
+  <label for="image-upload"><i class="fa-solid fa-folder-open"></i>
+    <input id="image-upload" type="file" (change)="selectImage($event)">
+  </label>
+  <i class="fa-solid fa-x" (click)="deleteImage()" style="margin: 5px"></i>
 </div>

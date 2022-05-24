@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-image-upload',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./image-upload.component.css']
 })
 export class ImageUploadComponent implements OnInit {
+  @Output() imageOutput = new EventEmitter<string>();
   url!: string;
 
   constructor() { }
@@ -21,6 +22,10 @@ export class ImageUploadComponent implements OnInit {
         this.url = f.target.result;
       }
     }
+  }
+
+  deleteImage() {
+    this.url = "";
   }
 
 }
