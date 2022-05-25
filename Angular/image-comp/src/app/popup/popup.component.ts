@@ -1,3 +1,4 @@
+import { ImageUploadComponent } from './../image-upload/image-upload.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import * as wijiInput from '@grapecity/wijmo.input'
 
@@ -6,8 +7,9 @@ import * as wijiInput from '@grapecity/wijmo.input'
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.css']
 })
-export class PopupComponent implements OnInit {
+export class PopupComponent implements OnInit  {
   @ViewChild('ImagePopup', {static: true}) imagePopup!: wijiInput.Popup;
+  url!: string;
 
   constructor() { }
 
@@ -15,4 +17,7 @@ export class PopupComponent implements OnInit {
     this.imagePopup.position = 6
   }
 
+  getImageUrl(_$event: any) {
+    this.url = _$event;
+  }
 }

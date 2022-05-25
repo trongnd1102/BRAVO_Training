@@ -1,6 +1,6 @@
 <div class="main-content">
   <div class="image-view">
-    <img [src]="" style="width: 50vh; height: 50vh;">
+    <img [src]="url" style="width: 50vh; height: 50vh;">
   </div>
   <div class="show-popup">
     <button #btnShowPopup class="btn btn-primary">
@@ -11,7 +11,7 @@
         [showTrigger]="'Click'"
         [hideTrigger]="'Blur'"
         [isResizable]="true">
-      <app-image-upload></app-image-upload>
+      <app-image-upload (imageOutput)="getImageUrl($event)"></app-image-upload>
     </wj-popup>
   </div>
 </div>
