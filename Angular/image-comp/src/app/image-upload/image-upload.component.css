@@ -1,13 +1,27 @@
+.image-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid blue;
+  /* height: 100%; */
+}
+
 input[type=file] {
   display: none;
 }
 
 .image-preview {
-  width: 30vh;
-  height: 20vh;
+  width: 100%;
+  /* height: calc(100% - 30px); */
+  border: 2px solid red;
 }
 
-.option-list{
+.option {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.option-list {
   margin: 0;
   padding: 0;
   height: 30px;

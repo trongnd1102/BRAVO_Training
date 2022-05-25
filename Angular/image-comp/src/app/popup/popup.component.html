@@ -1,13 +1,18 @@
-<div class="image-popup">
-  <button #btnShowPopup class="btn btn-primary">
-    <i class="fa-solid fa-angle-down" ></i>
-  </button>
-
-  <wj-popup #ImagePopup class="popover"
-      [owner]="btnShowPopup"
-      [showTrigger]="'Click'"
-      [hideTrigger]="'Blur'">
-    <app-image-upload></app-image-upload>
-  </wj-popup>
+<div class="main-content">
+  <div class="image-view">
+    <img [src]="" style="width: 50vh; height: 50vh;">
+  </div>
+  <div class="show-popup">
+    <button #btnShowPopup class="btn btn-primary">
+      <i class="fa-solid fa-angle-down" ></i>
+    </button>
+    <wj-popup #ImagePopup class="popover"
+        [owner]="btnShowPopup"
+        [showTrigger]="'Click'"
+        [hideTrigger]="'Blur'"
+        [isResizable]="true">
+      <app-image-upload></app-image-upload>
+    </wj-popup>
+  </div>
 </div>
 
