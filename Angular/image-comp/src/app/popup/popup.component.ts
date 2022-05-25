@@ -1,4 +1,3 @@
-import { ImageUploadComponent } from './../image-upload/image-upload.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import * as wijiInput from '@grapecity/wijmo.input'
 
@@ -14,7 +13,7 @@ export class PopupComponent implements OnInit  {
   constructor() { }
 
   ngOnInit(): void {
-    this.imagePopup.position = 6
+    this.imagePopup.position = 5
   }
 
   getImageUrl($event: any) {
