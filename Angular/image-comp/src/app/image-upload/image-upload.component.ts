@@ -20,13 +20,14 @@ export class ImageUploadComponent implements OnInit {
       readFile.readAsDataURL(e.target.files[0]);
       readFile.onload = (f: any) => {
         this.url = f.target.result;
-        this.imageOutput.emit(this.url)
+        this.imageOutput.emit(this.url);
       }
     }
   }
 
   deleteImage() {
     this.url = "";
+    this.imageOutput.emit(this.url);
   }
 
 }
