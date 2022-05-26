@@ -8,6 +8,11 @@ input[type=file] {
   display: none;
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
 .option {
   display: flex;
   flex-wrap: nowrap;
