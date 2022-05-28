@@ -11,7 +11,9 @@
         [showTrigger]="'Click'"
         [hideTrigger]="'Blur'"
         [isResizable]="true">
-      <app-image-upload (imageOutput)="getImageUrl($event)"></app-image-upload>
+      <div class="image-upload">
+        <app-image-upload (imageOutput)="getImageUrl($event)"></app-image-upload>
+      </div>
     </wj-popup>
   </div>
 </div>

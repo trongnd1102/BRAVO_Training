@@ -16,7 +16,7 @@ export class PopupComponent implements OnInit  {
     this.imagePopup.position = 5
   }
 
-  getImageUrl($event: any) {
-    this.url = $event;
+  getImageUrl(e: any) {
+    this.url = e;
   }
 }

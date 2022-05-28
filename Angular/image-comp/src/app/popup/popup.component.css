@@ -2,8 +2,8 @@
   margin: auto;
   margin-top: 10px;
   margin-bottom: 10px;
-  width: 100vh;
-  height: 50vh;
+  width: 50%;
+  height: 50%;
   border: 2px solid #ccc;
   background-color: #f0f0f0;
   display: flex;
@@ -13,6 +13,22 @@
 
 .image-view {
   margin-left: 5vw;
+  overflow: auto;
+}
+
+.popover {
+  width: 480px;
+  height: auto;
+}
+
+.image-upload {
+  width: 100%;
+  height: auto;
+  display: flex;
+}
+
+img {
+  margin-top: 3px;
 }
 
 button {
