@@ -3,18 +3,23 @@
     <img [src]="url" width="480" height="360">
   </div>
   <div class="option">
-    <ul class="option-list">
-      <li>
-        <label for="image-upload"><i class="fa-solid fa-folder-open" style="margin-left: 5px; color: #dcb67a"></i>
-          <input id="image-upload" type="file" (change)="selectImage($event)">
-        </label>
-      </li>
-      <li><i class="border-left-solid"></i>
-        <i class="fa-solid fa-x" (click)="deleteImage()" style="color: #a1260d"></i>
-      </li>
-      <li><i class="border-left-solid"></i><i class="bi bi-zoom-out"></i></li>
-      <li style="margin: 10px">100%</li>
-      <li><i class="bi bi-zoom-in" style="margin-right: 5px"></i></li>
-    </ul>
+
+    <form id="form1">
+      <ul class="option-list">
+        <li>
+          <label for="image-upload"><i class="fa-solid fa-folder-open" style="margin-left: 5px; color: #dcb67a"></i>
+              <input id="image-upload" type="file" (change)="selectImage($event)">
+          </label>
+        </li>
+        <li><i class="border-left-solid"></i>
+          <label for="image-reset"><i class="fa-solid fa-x" (click)="deleteImage()" style="color: #a1260d"></i>
+            <input id="image-reset" type="reset" (click)="deleteImage()">
+          </label>
+        </li>
+        <li><i class="border-left-solid"></i><i class="bi bi-zoom-out"></i></li>
+        <li style="margin: 10px">100%</li>
+        <li><i class="bi bi-zoom-in" style="margin-right: 5px"></i></li>
+      </ul>
+    </form>
   </div>
 </div>

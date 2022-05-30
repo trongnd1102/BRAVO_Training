@@ -26,6 +26,7 @@ export class ImageUploadComponent implements OnInit {
   }
 
   deleteImage() {
+    document.getElementById('image-upload')?.onreset;
     this.url = "";
     this.imageOutput.emit(this.url);
   }
