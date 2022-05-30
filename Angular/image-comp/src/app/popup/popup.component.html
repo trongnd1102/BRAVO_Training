@@ -17,10 +17,10 @@
     </wj-popup>
   </div>
 </div>
-<div class="image-encode">
-  <div class="image-url">{{urlCopy}}</div>
-  <div class="encode-button">
-    <button (click)="convertBase64ToUint8Array(urlCopy)">Uint8Array</button><br>
-    <button (click)="converUint8ArrayToBase64()">Base64</button>
-  </div>
+
+<div class="encode-button">
+  <button (click)="convertBase64ToUint8Array(urlCopy)">Uint8Array</button><br>
+  <button (click)="converUint8ArrayToBase64()">Base64</button>
 </div>
+
+<div class="image-encode">{{urlCopy}}</div>

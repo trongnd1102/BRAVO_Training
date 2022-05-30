@@ -12,11 +12,7 @@
 }
 
 @media (max-width: 1024px) {
-  .main-content {
-    width: calc(100% - 60px);
-  }
-
-  .image-encode {
+  .main-content, .encode-button, .image-encode {
     width: calc(100% - 60px) !important;
   }
 }
@@ -45,17 +41,18 @@ button {
   background-color: #fdfdfd;
 }
 
-.image-encode {
-  width: 50%;
-  height: 20vh;
+.encode-button {
   margin: auto;
+  width: 50%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  overflow: auto;
 }
 
-.image-url {
-  width: 85%;
-  height: 20vh;
+.image-encode {
+  width: 50%;
+  height: 15vh;
+  margin: auto;
   overflow: auto;
   word-wrap: break-word;
   border: 2px solid #ccc;
