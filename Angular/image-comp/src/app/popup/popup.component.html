@@ -1,6 +1,6 @@
 <div class="main-content">
   <div class="image-view">
-    <img [src]="url" style="width: 80vh; height: 50vh">
+    <img [src]="url">
   </div>
   <div class="show-popup">
     <button #btnShowPopup class="btn btn-primary">
@@ -17,4 +17,10 @@
     </wj-popup>
   </div>
 </div>
-<div class="image-url">{{url}}</div>
+<div class="image-encode">
+  <div class="image-url">{{urlCopy}}</div>
+  <div class="encode-button">
+    <button (click)="convertBase64ToUint8Array(urlCopy)">Uint8Array</button><br>
+    <button (click)="converUint8ArrayToBase64()">Base64</button>
+  </div>
+</div>
