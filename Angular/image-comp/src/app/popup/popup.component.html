@@ -18,9 +18,9 @@
   </div>
 </div>
 
-<div class="encode-button">
-  <button (click)="convertBase64ToUint8Array(urlCopy)">Uint8Array</button><br>
-  <button (click)="converUint8ArrayToBase64()">Base64</button>
+<div class="encode-option">
+  <button class="encode-button" (click)="convertBase64ToUint8Array(urlCopy)">Uint8Array</button><br>
+  <button class="encode-button" (click)="converUint8ArrayToBase64()">Base64</button>
 </div>
 
-<div class="image-encode">{{urlCopy}}</div>
+<div class="image-url">{{urlCopy}}</div>
