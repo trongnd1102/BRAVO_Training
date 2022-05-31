@@ -1,0 +1,41 @@
+.image-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+input[type=file] {
+  display: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.option {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.option-list {
+  margin: 0;
+  padding: 0;
+  height: 30px;
+}
+
+.option-list li {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.option-list .border-left-solid {
+  border-left: 1px solid #ccc;
+  margin: 5px;
+}
+
+button {
+  border: none;
+  padding: 0;
+  background-color: white;
+}
