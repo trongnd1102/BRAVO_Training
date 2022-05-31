@@ -1,4 +1,9 @@
+.grid-container {
+  height: calc(100vh - 178px);
+}
+
 .header {
+  height: 8%;
   display: flex;
   justify-content: space-between;
 }
@@ -9,8 +14,12 @@
   justify-content: space-around;
 }
 
+.grid-table {
+  height: 92%;
+}
+
 .wj-flexgrid {
-  max-height: calc(100vh - 227px);
+  height: calc(100% - 5px);
 }
 
 :host >>> .wj-cell.wj-header .wj-sort-index {
