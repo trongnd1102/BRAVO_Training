@@ -8,7 +8,7 @@ import * as wijiInput from '@grapecity/wijmo.input'
 })
 export class PopupComponent implements OnInit  {
   @ViewChild('ImagePopup', {static: true}) imagePopup!: wijiInput.Popup;
-  url!: string;
+  url: any;
   urlCopy: any;
 
   constructor() { }

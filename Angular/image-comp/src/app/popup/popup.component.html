@@ -12,7 +12,7 @@
         [hideTrigger]="'Blur'"
         [isResizable]="true">
       <div class="image-upload">
-        <app-image-upload (imageOutput)="getImageUrl($event)"></app-image-upload>
+        <app-image-upload [url]="url" (imageOutput)="getImageUrl($event)"></app-image-upload>
       </div>
     </wj-popup>
   </div>
@@ -23,4 +23,6 @@
   <button class="encode-button" (click)="converUint8ArrayToBase64()">Base64</button>
 </div>
 
-<div class="image-url">{{urlCopy}}</div>
+<div style="margin: auto; width: 50%; height: 12vh;">
+  <textarea class="image-url" [(ngModel)]="url"></textarea>
+</div>

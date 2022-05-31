@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-image-upload',
@@ -6,8 +6,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./image-upload.component.css']
 })
 export class ImageUploadComponent implements OnInit {
+  @Input() url: any;
   @Output() imageOutput = new EventEmitter<string>();
-  url!: string;
+  // url: any;
 
   constructor() { }
 
