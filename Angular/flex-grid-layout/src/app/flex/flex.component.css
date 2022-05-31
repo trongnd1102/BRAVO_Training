@@ -1,15 +1,8 @@
-.flex-container {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
 /*
  * Header CSS
  */
 .header {
   display: flex;
-  flex-grow: 1;
   height: 30px;
   justify-content: space-between;
   background-color: #f8f8f8;
@@ -39,28 +32,30 @@
  */
 .content {
   display: flex;
-  flex: 1 0 calc(100vh - 228px);
-  border: 2px solid green;
+  flex-direction: row;
+  height: calc(100vh - 228px);
+}
+
+@media (max-width: 947px) {
+  .content {
+  height: calc(100vh - 250px);
+  }
 }
 
 .side-bar {
-  flex: 1 0 250px;
+  flex: 1 0 20vw;
   background-color: #eaecf5;
-  border: 2px solid red;
 }
 
 .main-content {
-  /* flex: 2; */
-  /* height: 90vh; */
+  flex: 1 0 80vw;
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
   overflow-x: auto;
-  border: 2px solid blue;
 }
 
 .main-content-change {
-  height: 90vh;
   display: flex;
   flex-direction: row;
   background-color: #ffffff;
@@ -91,7 +86,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* height: calc(70vh - 20px); */
+  height: calc(100% - 20px);
 }
 
 .side-bar-option-data {
@@ -140,7 +135,6 @@
  */
 .main-table-status {
   background-color: #f0f0f0;
-  width: 100%;
   height: 20px;
 }
 
@@ -150,10 +144,13 @@
 }
 
 .main-table {
-  height: 50vh;
-  flex: 2 0 40vh;
+  height: 60%;
   overflow-y: auto;
-  border: 2px solid purple;
+}
+
+.main-table-change {
+  height: 100% !important;
+  overflow-y: auto;
 }
 
 .main-table table {
@@ -219,24 +216,37 @@
  * Sub Table CSS
  */
 .sub-table {
-  flex-grow: 1;
-  border: 2px solid orange;
+  height: 40%;
 }
 
 .sub-table-change {
   width: 25%;
+  height: 100%;
+}
+
+.sub-list-table-toggle {
+  height: calc(100% - 23px);
+}
+
+.sub-list-table-toggle-change {
+  height: calc(100% - 42px);
+}
+
+@media (max-width: 909px) {
+  .sub-list-table-toggle {
+    height: calc(100% - 43px);
+  }
 }
 
 .sub-list-table {
   display: flex;
-  height: 25vh;
+  flex-direction: row;
+  height: 100%;
 }
 
 .sub-list-table-change {
-  height: calc(85vh - 4px);
   display: flex;
   flex-direction: column;
-  /* justify-content: space-between; */
 }
 
 .sub-table-1 {
@@ -253,13 +263,17 @@
   border-top: 3px solid #ccc;
 }
 
-@media screen and (max-width: 800px) {
+@media (max-width: 800px) {
   .sub-list-table {
     flex-direction: column;
+    justify-content: space-between;
   }
-  .sub-table-1, .sub-table-2 {
-    flex: auto;
-    height: auto;
+  .sub-table-1 {
+    flex: 1;
+  }
+  .sub-table-2 {
+    flex: 1;
+    border-left: 0;
   }
 }
 
@@ -297,10 +311,6 @@
 /*
  * Sub Table 2 CSS
  */
-/* .sub-table-2 {
-  display: none;
-} */
-
 .sub-table-2 table {
   table-layout: fixed;
   width: 100%;

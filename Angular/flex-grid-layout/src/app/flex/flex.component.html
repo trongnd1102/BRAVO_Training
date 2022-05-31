@@ -77,9 +77,10 @@
       </div>
     </div>
 
-    <div class="main-content" [ngStyle]="{'width': bOpenSideBar ? 'calc(100%-200px)' : '100%','height': !bOpenSubTable ? '' : '90vh'}"
+    <div class="main-content" [ngStyle]="{'width': bOpenSideBar ? '80vw' : '100vw'}"
                               [class.main-content-change]="bChangeContentDisplay">
-      <div class="main-table">
+      <div class="main-table" [ngStyle]="{'height': bOpenSubTable ? 'fit-content' : '60%'}"
+                              [class.main-table-change]="bChangeContentDisplay">
         <div class="main-table-status"><i class="fa-solid fa-angle-right"></i> Đã hoàn thiện</div>
         <table>
           <thead>
@@ -143,7 +144,8 @@
             </ul>
           </div>
         </div>
-        <div [hidden]="bOpenSubTable">
+        <div [hidden]="bOpenSubTable" class="sub-list-table-toggle"
+                [class.sub-list-table-toggle-change]="bChangeContentDisplay">
           <div class="sub-list-table" [class.sub-list-table-change]="bChangeContentDisplay">
             <div class="sub-table-1" style="overflow: auto">
               <table>
