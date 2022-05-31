@@ -1,10 +1,4 @@
-/* .all {
-  display: flex;
-  flex-direction: column;
-} */
-
 .header {
-  /* flex-grow: 1; */
   padding: 4vh;
   height: 20%;
   text-align: center;
@@ -13,7 +7,6 @@
 }
 
 .navigation {
-  /* flex-grow: 1; */
   height: 5%;
   display: flex;
   justify-content: space-around;
@@ -31,13 +24,3 @@
   background-color: #ddd;
   color: black;
 }
-
-.route {
-  height: calc(100vh - 178px);
-}
-
-/* @media screen and (max-width: 800px) {
-  .navigation {
-    flex-direction: column;
-  }
-} */
