@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import * as wijiInput from '@grapecity/wijmo.input'
@@ -17,9 +17,9 @@ import * as wijiInput from '@grapecity/wijmo.input'
 })
 export class ImageBoxComponent implements OnInit, ControlValueAccessor  {
   @ViewChild('ImagePopup', {static: true}) viewImagePopup!: wijiInput.Popup;
-  onChange = () => {};
+  @Input() zImageBoxUrl: any;
+  onChange = (url: any) => {};
   onTouched = () => {};
-  zImageBoxUrl: any;
 
   constructor() { }
 
@@ -34,12 +34,12 @@ export class ImageBoxComponent implements OnInit, ControlValueAccessor  {
   }
 
   ngOnInit(): void {
-    this.viewImagePopup.position = 5
+    // this.viewImagePopup.position = 5
   }
 
   getImageUrl(e: any) {
     this.zImageBoxUrl = e;
-    this.onChange = e;
+    this.onChange(this.zImageBoxUrl);
   }
 
 }

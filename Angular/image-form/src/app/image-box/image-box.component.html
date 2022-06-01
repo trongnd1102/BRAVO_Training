@@ -1,6 +1,6 @@
 <div class="box-content">
   <div class="image-view">
-    <img [src]="zImageBoxUrl">
+    <img [src]="zImageBoxUrl" [ngStyle]="{'display': zImageBoxUrl ? '' : 'none'}">
   </div>
   <div class="show-popup">
     <button #btnShowPopup class="btn btn-primary">

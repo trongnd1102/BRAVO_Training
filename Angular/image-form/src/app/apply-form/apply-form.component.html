@@ -1,0 +1,28 @@
+<div class="flex-container">
+  <div class="flex-1">
+    <div class="image-form-1">
+      <div class="image-url">
+        <textarea class="url" [(ngModel)]="zBindingUrl"></textarea>
+      </div>
+      <form [formGroup]="form" style="height: 50%">
+        <app-image-box formControlName="Image1" [zImageBoxUrl]="zBindingUrl"></app-image-box>
+      </form>
+    </div>
+    <div class="image-form-2">
+      <div class="image-url">
+        <textarea class="url" [(ngModel)]="zBindingUrl"></textarea>
+      </div>
+      <form [formGroup]="form" style="height: 50%">
+        <app-image-box formControlName="Image1" [zImageBoxUrl]="zBindingUrl"></app-image-box>
+      </form>
+    </div>
+  </div>
+  <div class="image-form-3">
+    <div class="image-url">
+      <textarea class="url" [(ngModel)]="zBindingUrl"></textarea>
+    </div>
+    <form [formGroup]="form" style="height: 50%">
+      <app-image-box formControlName="Image1" [zImageBoxUrl]="zBindingUrl"></app-image-box>
+    </form>
+  </div>
+</div>

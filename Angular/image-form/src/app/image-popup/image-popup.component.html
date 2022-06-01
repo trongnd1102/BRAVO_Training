@@ -1,6 +1,7 @@
 <div class="image-popup">
   <div class="image-preview">
-    <img [src]="zImagePopupUrl" width="480" height="360">
+    <img [src]="zImagePopupUrl"
+      [ngStyle]="{'display': zImagePopupUrl ? '' : 'none', 'height': zImagePopupUrl ? 'auto' : '100 %'}">
   </div>
   <div class="option">
     <form id="form1">
