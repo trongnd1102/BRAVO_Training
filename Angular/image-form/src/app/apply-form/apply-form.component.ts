@@ -8,21 +8,34 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ApplyFormComponent implements OnInit {
   form: FormGroup;
-  zBindingUrl: any;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       Image1: ['', {updateOn: 'change'}],
+      Image2: ['', {updateOn: 'change'}],
+      Image3: ['', {updateOn: 'change'}],
     });
   }
 
   ngOnInit(): void {
-    this.Image1.valueChanges.subscribe(value => {
-      this.zBindingUrl = this.Image1.value
+    this.form.valueChanges.subscribe(value => {
+      console.log(value)
     })
   }
 
   get Image1() {
     return this.form.get('Image1')!;
+  }
+
+  get Image2() {
+    return this.form.get('Image2')!;
+  }
+
+  get Image3() {
+    return this.form.get('Image3')!;
+  }
+
+  convertBase64ToImage(e: any, formName: any) {
+    this.form.get(formName)!.setValue(e.target.value);
   }
 }

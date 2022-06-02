@@ -2,27 +2,27 @@
   <div class="flex-1">
     <div class="image-form-1">
       <div class="image-url">
-        <textarea class="url" [(ngModel)]="zBindingUrl"></textarea>
+        <textarea class="url" (input)="convertBase64ToImage($event,'Image1')">{{Image1.value}}</textarea>
       </div>
-      <form [formGroup]="form" style="height: 50%">
-        <app-image-box formControlName="Image1" [zImageBoxUrl]="zBindingUrl"></app-image-box>
+      <form [formGroup]="form" id="1">
+        <app-image-box formControlName="Image1"></app-image-box>
       </form>
     </div>
     <div class="image-form-2">
       <div class="image-url">
-        <textarea class="url" [(ngModel)]="zBindingUrl"></textarea>
+        <textarea class="url" (input)="convertBase64ToImage($event,'Image2')">{{Image2.value}}</textarea>
       </div>
-      <form [formGroup]="form" style="height: 50%">
-        <app-image-box formControlName="Image1" [zImageBoxUrl]="zBindingUrl"></app-image-box>
+      <form [formGroup]="form" id="2">
+        <app-image-box formControlName="Image2"></app-image-box>
       </form>
     </div>
   </div>
   <div class="image-form-3">
     <div class="image-url">
-      <textarea class="url" [(ngModel)]="zBindingUrl"></textarea>
+      <textarea class="url" (input)="convertBase64ToImage($event,'Image3')">{{Image3.value}}</textarea>
     </div>
-    <form [formGroup]="form" style="height: 50%">
-      <app-image-box formControlName="Image1" [zImageBoxUrl]="zBindingUrl"></app-image-box>
+    <form [formGroup]="form" id="3">
+      <app-image-box formControlName="Image3"></app-image-box>
     </form>
   </div>
 </div>
