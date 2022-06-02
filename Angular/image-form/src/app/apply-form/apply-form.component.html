@@ -4,7 +4,7 @@
       <div class="image-url">
         <textarea class="url" (input)="convertBase64ToImage($event,'Image1')">{{Image1.value}}</textarea>
       </div>
-      <form [formGroup]="form" id="1">
+      <form [formGroup]="form">
         <app-image-box formControlName="Image1"></app-image-box>
       </form>
     </div>
@@ -12,7 +12,7 @@
       <div class="image-url">
         <textarea class="url" (input)="convertBase64ToImage($event,'Image2')">{{Image2.value}}</textarea>
       </div>
-      <form [formGroup]="form" id="2">
+      <form [formGroup]="form">
         <app-image-box formControlName="Image2"></app-image-box>
       </form>
     </div>
@@ -21,7 +21,7 @@
     <div class="image-url">
       <textarea class="url" (input)="convertBase64ToImage($event,'Image3')">{{Image3.value}}</textarea>
     </div>
-    <form [formGroup]="form" id="3">
+    <form [formGroup]="form">
       <app-image-box formControlName="Image3"></app-image-box>
     </form>
   </div>

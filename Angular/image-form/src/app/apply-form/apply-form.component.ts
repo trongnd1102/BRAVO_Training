@@ -35,7 +35,7 @@ export class ApplyFormComponent implements OnInit {
     return this.form.get('Image3')!;
   }
 
-  convertBase64ToImage(e: any, formName: any) {
-    this.form.get(formName)!.setValue(e.target.value);
+  convertBase64ToImage(e: any, pFormName: any) {
+    this.form.get(pFormName)!.setValue(e.target.value);
   }
 }
