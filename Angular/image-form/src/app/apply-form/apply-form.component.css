@@ -11,7 +11,13 @@ form {
 
 .image-box {
   margin: auto;
-  width: 70%;
+  height: 70%;
+}
+
+@media (max-width: 992px) {
+  .image-box {
+    height: auto;
+  }
 }
 
 .image-url {
