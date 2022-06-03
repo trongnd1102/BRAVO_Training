@@ -1,28 +1,11 @@
 <div class="flex-container">
-  <div class="flex-1">
-    <div class="image-form-1">
-      <div class="image-url">
-        <textarea class="url" (input)="convertBase64ToImage($event,'Image1')">{{Image1.value}}</textarea>
-      </div>
-      <form [formGroup]="form">
-        <app-image-box formControlName="Image1"></app-image-box>
-      </form>
-    </div>
-    <div class="image-form-2">
-      <div class="image-url">
-        <textarea class="url" (input)="convertBase64ToImage($event,'Image2')">{{Image2.value}}</textarea>
-      </div>
-      <form [formGroup]="form">
-        <app-image-box formControlName="Image2"></app-image-box>
-      </form>
-    </div>
-  </div>
-  <div class="image-form-3">
+  <form [formGroup]="form">
     <div class="image-url">
-      <textarea class="url" (input)="convertBase64ToImage($event,'Image3')">{{Image3.value}}</textarea>
+      <textarea #img1 class="url" [value]="form.get('Image')!.value"
+        (input)="form.get('Image')!.setValue(img1.value)"></textarea>
     </div>
-    <form [formGroup]="form">
-      <app-image-box formControlName="Image3"></app-image-box>
-    </form>
-  </div>
+    <div class="image-box" [ngStyle]="{'height': form.get('Image')!.value ? '' : '70%'}">
+      <app-image-box formControlName="Image"></app-image-box>
+    </div>
+  </form>
 </div>

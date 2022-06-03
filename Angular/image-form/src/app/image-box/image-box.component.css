@@ -1,9 +1,7 @@
 .box-content {
-  margin: auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
   height: 100%;
   background-color: #f0f0f0;
+  border: 2px solid #ccc;
   display: flex;
   flex-direction: row;
 }
