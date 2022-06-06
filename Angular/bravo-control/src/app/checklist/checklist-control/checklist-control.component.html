@@ -1,0 +1,16 @@
+<div class="checklist-control">
+  <ul style="padding: 0">
+    <li *ngFor="let checkList of checkLists">
+      <input type="checkbox" [id]="checkList.id" [(ngModel)]="checkList.isSelected"
+          (change)="selectCheckList(checkList)">
+      <label [for]="checkList.id">{{checkList.name}}</label>
+      <ul class="list-option">
+        <li *ngFor="let option of checkList.options">
+          <input type="checkbox" [id]="option.id" [(ngModel)]="option.isSelected"
+              (change)="autoSelectCheckList(checkList, checkList.options)">
+          <label [for]="option.id">{{option.name}}</label>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>

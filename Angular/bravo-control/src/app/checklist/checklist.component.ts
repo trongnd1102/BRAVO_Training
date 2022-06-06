@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-checklist',
@@ -6,10 +7,63 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checklist.component.css']
 })
 export class ChecklistComponent implements OnInit {
+  tradingCheckList = [
+    {
+      id: "Trading",
+      name: "Loại giao dịch",
+      isSelected: false,
+      options: [
+        {
+          id: "CustomerCare-Trading",
+          name: "Chăm sóc khách hàng",
+          isSelected: false
+        },
+        {
+          id: "Order-Trading",
+          name: "Yêu cầu / Khiếu nại",
+          isSelected: false
+        }
+      ]
+    }
+  ]
+  ratingCheckList = [
+    {
+      id: "Rating",
+      name: "Loại đánh giá",
+      isSelected: false,
+      options: [
+        {
+          id: "Attitude-Rating",
+          name: "Thái độ nhân viên",
+          isSelected: false
+        },
+        {
+          id: "Quality-Rating",
+          name: "Chất lượng sản phẩm, dịch vụ",
+          isSelected: false
+        },
+        {
+          id: "Work-Rating",
+          name: "Chất lượng công việc",
+          isSelected: false
+        },
+      ]
+    }
+  ]
 
-  constructor() { }
+  form: FormGroup
+
+  constructor(private fb: FormBuilder) {
+    this.form = this.fb.group({
+      Trading: ['', {updateOn: 'change'}],
+      Rating: ['', {updateOn: 'change'}],
+    });
+  }
 
   ngOnInit(): void {
+    this.form.valueChanges.subscribe(value => {
+      console.log(value)
+    })
   }
 
 }

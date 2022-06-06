@@ -1,0 +1,14 @@
+.checklist-control {
+  color: white;
+  background-color: #165ea1;
+}
+
+.checklist-control ul {
+  list-style: none;
+  margin: 0;
+  padding-inline-start: 15px;
+}
+
+.list-option label {
+  margin-bottom: 5px;
+}
