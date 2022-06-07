@@ -14,12 +14,12 @@ export class ChecklistComponent implements OnInit {
       isSelected: false,
       options: [
         {
-          id: "CustomerCare-Trading",
+          id: "CustomerCareTradingCode",
           name: "Chăm sóc khách hàng",
           isSelected: false
         },
         {
-          id: "Order-Trading",
+          id: "OrderTradingCode",
           name: "Yêu cầu / Khiếu nại",
           isSelected: false
         }
@@ -33,17 +33,17 @@ export class ChecklistComponent implements OnInit {
       isSelected: false,
       options: [
         {
-          id: "Attitude-Rating",
+          id: "AttitudeRatingCode",
           name: "Thái độ nhân viên",
           isSelected: false
         },
         {
-          id: "Quality-Rating",
+          id: "QualityRatingCode",
           name: "Chất lượng sản phẩm, dịch vụ",
           isSelected: false
         },
         {
-          id: "Work-Rating",
+          id: "WorkRatingCode",
           name: "Chất lượng công việc",
           isSelected: false
         },

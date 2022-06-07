@@ -2,16 +2,21 @@
   <div class="checklist">
     <form [formGroup]="form">
       <div class="trading">
-        <app-checklist-control formControlName="Trading" [checkLists]="tradingCheckList"
-          ngDefaultControl></app-checklist-control>
+        <app-checklist-control formControlName="Trading"
+            [checkLists]="tradingCheckList"></app-checklist-control>
       </div>
       <div class="rating">
-        <app-checklist-control formControlName="Rating" [checkLists]="ratingCheckList"
-          ngDefaultControl></app-checklist-control>
+        <app-checklist-control formControlName="Rating"
+            [checkLists]="ratingCheckList"></app-checklist-control>
       </div>
     </form>
   </div>
   <div class="output">
-    {{form.value | json}}
+    <div class="trading">
+      Trading Value: {{form.get('Trading')!.value}}
+    </div><br>
+    <div class="rating">
+      Rating Value: {{form.get('Rating')!.value}}
+    </div>
   </div>
 </div>

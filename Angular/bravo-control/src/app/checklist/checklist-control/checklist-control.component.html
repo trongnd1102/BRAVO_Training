@@ -7,7 +7,7 @@
       <ul class="list-option">
         <li *ngFor="let option of checkList.options">
           <input type="checkbox" [id]="option.id" [(ngModel)]="option.isSelected"
-              (change)="autoSelectCheckList(checkList, checkList.options)">
+              (change)="selectOption(checkList)">
           <label [for]="option.id">{{option.name}}</label>
         </li>
       </ul>
