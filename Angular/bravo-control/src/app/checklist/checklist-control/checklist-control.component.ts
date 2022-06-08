@@ -12,11 +12,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   }]
 })
 export class ChecklistControlComponent implements OnInit, ControlValueAccessor {
+  @Input() zCheckListType!: string;
   @Input() checkLists: any;
   @Input() zValueListSeparator!: string;
+  @Input() bAllowSelectMultiValue!: boolean;
   valueList: string[] = [];
   onChange = (value: any) => {};
-  onTouch = () => {}
+  onTouch = () => {};
 
   constructor() { }
 
@@ -32,12 +34,12 @@ export class ChecklistControlComponent implements OnInit, ControlValueAccessor {
   ngOnInit(): void {
   }
 
-  selectCheckList(pCheckList: any) {
-    for(let i = 0; i < pCheckList.options.length; i++) {
-      pCheckList.options[i].isSelected = pCheckList.isSelected;
-      if(pCheckList.options[i].isSelected) {
-        if(this.valueList.indexOf(pCheckList.options[i].id) == -1) {
-          this.valueList.push(pCheckList.options[i].id)
+  onSelectAll(e: any) {
+    for(let i = 0; i < this.checkLists.length; i++) {
+      this.checkLists[i].isSelected = e.target.checked;
+      if(this.checkLists[i].isSelected) {
+        if(this.valueList.indexOf(this.checkLists[i].id) == -1) {
+          this.valueList.push(this.checkLists[i].id)
         }
       } else {
         this.valueList = []
@@ -46,20 +48,32 @@ export class ChecklistControlComponent implements OnInit, ControlValueAccessor {
     this.onChange(this.valueList.join(this.zValueListSeparator))
   }
 
-  selectOption(pCheckList: any) {
-    for(let i = 0; i < pCheckList.options.length; i++) {
-      if(pCheckList.options[i].isSelected) {
-        if(this.valueList.indexOf(pCheckList.options[i].id) == -1) {
-          this.valueList.push(pCheckList.options[i].id)
-        }
-      } else {
-        if(this.valueList.indexOf(pCheckList.options[i].id) > -1) {
-          this.valueList.splice(this.valueList.indexOf(pCheckList.options[i].id),1)
-        }
-      }}
+  onSelectOption(e: any) {
+    if(e.target.checked) {
+      if(this.valueList.indexOf(e.target.value) == -1) {
+        this.valueList.push(e.target.value)
+      }
+    } else {
+      if(this.valueList.indexOf(e.target.value) > -1) {
+        this.valueList.splice(this.valueList.indexOf(e.target.value),1)
+      }
+    }
     this.onChange(this.valueList.join(this.zValueListSeparator))
-    pCheckList.isSelected = pCheckList.options.every((option: any) => {
+    this.checkLists.selected = this.checkLists.every((option: any) => {
       return option.isSelected == true;
     })
+  }
+
+  onSelectedOnlyOneOption(e: any) {
+    for(let i = 0; i < this.checkLists.length; i++) {
+      if(this.checkLists[i].id !== e.target.value) {
+        this.checkLists[i].isSelected = false;
+      }
+      if(this.checkLists[i].isSelected) {
+        this.valueList = []
+        this.valueList.push(e.target.value)
+      }
+    }
+    this.onChange(this.valueList.toString())
   }
 }

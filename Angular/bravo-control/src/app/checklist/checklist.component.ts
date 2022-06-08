@@ -9,45 +9,28 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class ChecklistComponent implements OnInit {
   tradingCheckList = [
     {
-      id: "Trading",
-      name: "Loại giao dịch",
-      isSelected: false,
-      options: [
-        {
-          id: "CustomerCareTradingCode",
-          name: "Chăm sóc khách hàng",
-          isSelected: false
-        },
-        {
-          id: "OrderTradingCode",
-          name: "Yêu cầu / Khiếu nại",
-          isSelected: false
-        }
-      ]
+      id: "CustomerCareTradingCode",
+      name: "Chăm sóc khách hàng",
+      isSelected: false
+    },
+    {
+      id: "OrderTradingCode",
+      name: "Yêu cầu / Khiếu nại",
+      isSelected: false
     }
   ]
   ratingCheckList = [
     {
-      id: "Rating",
-      name: "Loại đánh giá",
-      isSelected: false,
-      options: [
-        {
-          id: "AttitudeRatingCode",
-          name: "Thái độ nhân viên",
-          isSelected: false
-        },
-        {
-          id: "QualityRatingCode",
-          name: "Chất lượng sản phẩm, dịch vụ",
-          isSelected: false
-        },
-        {
-          id: "WorkRatingCode",
-          name: "Chất lượng công việc",
-          isSelected: false
-        },
-      ]
+      id: "AttitudeRatingCode",
+      name: "Thái độ nhân viên"
+    },
+    {
+      id: "QualityRatingCode",
+      name: "Chất lượng sản phẩm, dịch vụ"
+    },
+    {
+      id: "WorkRatingCode",
+      name: "Chất lượng công việc"
     }
   ]
 

@@ -9,6 +9,10 @@
   padding-inline-start: 15px;
 }
 
-.list-option label {
+.checklist-control label {
   margin-bottom: 5px;
+}
+
+.list-type-multi-value {
+  margin-inline-start: 20px;
 }
