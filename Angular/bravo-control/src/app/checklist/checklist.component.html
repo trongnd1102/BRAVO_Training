@@ -3,11 +3,11 @@
     <form [formGroup]="form">
       <div class="trading">
         <app-checklist-control formControlName="Trading"
-            [checkLists]="tradingCheckList"></app-checklist-control>
+            [checkLists]="tradingCheckList" [zValueListSeparator]="'-'"></app-checklist-control>
       </div>
       <div class="rating">
         <app-checklist-control formControlName="Rating"
-            [checkLists]="ratingCheckList"></app-checklist-control>
+            [checkLists]="ratingCheckList" [zValueListSeparator]="'*'"></app-checklist-control>
       </div>
     </form>
   </div>
