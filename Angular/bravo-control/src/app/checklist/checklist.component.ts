@@ -11,12 +11,10 @@ export class ChecklistComponent implements OnInit {
     {
       id: "CustomerCareTradingCode",
       name: "Chăm sóc khách hàng",
-      isSelected: false
     },
     {
       id: "OrderTradingCode",
       name: "Yêu cầu / Khiếu nại",
-      isSelected: false
     }
   ]
   ratingCheckList = [

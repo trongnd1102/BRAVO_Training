@@ -59,7 +59,7 @@ export class ChecklistControlComponent implements OnInit, ControlValueAccessor {
       }
     }
     this.onChange(this.valueList.join(this.zValueListSeparator))
-    this.checkLists.selected = this.checkLists.every((option: any) => {
+    this.checkLists.isSelected = this.checkLists.every((option: any) => {
       return option.isSelected == true;
     })
   }
@@ -69,9 +69,11 @@ export class ChecklistControlComponent implements OnInit, ControlValueAccessor {
       if(this.checkLists[i].id !== e.target.value) {
         this.checkLists[i].isSelected = false;
       }
-      if(this.checkLists[i].isSelected) {
-        this.valueList = []
+      if(e.target.checked) {
+        this.valueList = [];
         this.valueList.push(e.target.value)
+      } else {
+        this.valueList = [];
       }
     }
     this.onChange(this.valueList.toString())

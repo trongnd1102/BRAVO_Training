@@ -1,9 +1,9 @@
 <div class="checklist-control">
   <ul style="padding: 0">
     <li>
-      <input *ngIf="!bAllowSelectMultiValue" type="checkbox" id="CheckListType"
-        [checked]="checkLists.selected" (change)="onSelectAll($event)">
-      <label for="CheckListType" [class.list-type-multi-value]="bAllowSelectMultiValue">{{zCheckListType}}</label>
+      <input *ngIf="!bAllowSelectMultiValue" type="checkbox" id="CheckListType" [(ngModel)]="checkLists.isSelected"
+        [checked]="checkLists.isSelected" (change)="onSelectAll($event)">
+      <label for="CheckListType" [class.list-type-one-value]="bAllowSelectMultiValue">{{zCheckListType}}</label>
       <ul class="list-option">
         <li *ngFor="let checkList of checkLists">
           <input *ngIf="!bAllowSelectMultiValue" type="checkbox" id="checkList.id" [value]="checkList.id"
