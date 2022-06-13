@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ChecklistControlComponent } from './checklist-control/checklist-control.component';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -6,29 +7,38 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   templateUrl: './checklist.component.html',
   styleUrls: ['./checklist.component.css']
 })
-export class ChecklistComponent implements OnInit {
-  tradingCheckList = [
+export class ChecklistComponent implements OnInit, AfterViewInit {
+  @ViewChild('trading') tradingControl!: ChecklistControlComponent;
+  @ViewChild('rating') ratingControl!: ChecklistControlComponent;
+
+  tradingData = [
     {
-      id: "CustomerCareTradingCode",
-      name: "Chăm sóc khách hàng",
+      name: "CustomerCareTrading",
+      text: "Chăm sóc khách hàng",
+      value: "CustomerCareTradingCode"
     },
     {
-      id: "OrderTradingCode",
-      name: "Yêu cầu / Khiếu nại",
+      name: "OrderTrading",
+      text: "Yêu cầu / Khiếu nại",
+      value: "OrderTradingCode"
     }
   ]
-  ratingCheckList = [
+
+  ratingData = [
     {
-      id: "AttitudeRatingCode",
-      name: "Thái độ nhân viên"
+      name: "AttitudeRating",
+      text: "Thái độ nhân viên",
+      value: "AttitudeRatingCode"
     },
     {
-      id: "QualityRatingCode",
-      name: "Chất lượng sản phẩm, dịch vụ"
+      name: "QualityRating",
+      text: "Chất lượng sản phẩm, dịch vụ",
+      value: "QualityRatingCode"
     },
     {
-      id: "WorkRatingCode",
-      name: "Chất lượng công việc"
+      name: "WorkRating",
+      text: "Chất lượng công việc",
+      value: "WorkRatingCode"
     }
   ]
 
@@ -45,6 +55,17 @@ export class ChecklistComponent implements OnInit {
     this.form.valueChanges.subscribe(value => {
       console.log(value)
     })
+  }
+
+  ngAfterViewInit(): void {
+    for (let i = 0; i < this.tradingData.length; i++) {
+      this.tradingControl.addOption(this.tradingData[i].name,
+        this.tradingData[i].text, this.tradingData[i].value)
+    }
+    for (let i = 0; i < this.ratingData.length; i++) {
+      this.ratingControl.addOption(this.ratingData[i].name,
+        this.ratingData[i].text, this.ratingData[i].value)
+    }
   }
 
 }

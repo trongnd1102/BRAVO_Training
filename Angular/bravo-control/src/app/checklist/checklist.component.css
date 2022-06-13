@@ -2,20 +2,12 @@
   width: 100%;
   height: calc(100vh - 139px);
   display: flex;
-  flex-direction: row;
 }
 
 .checklist {
-  flex: 40%;
-  flex-direction: column;
   background-color: #145794;
 }
 
 .checklist div {
   margin: 5px;
-}
-
-.output {
-  flex: 60%;
-  background-color: #f0f0f0;
 }
