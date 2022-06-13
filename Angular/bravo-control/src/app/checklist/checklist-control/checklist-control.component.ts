@@ -1,6 +1,7 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { ControlBase } from '@grapecity/wijmo';
+import { Control } from '@grapecity/wijmo';
+import { WjDirectiveBehavior } from '@grapecity/wijmo.angular2.directivebase';
 
 import * as wjc from '@grapecity/wijmo';
 
@@ -14,7 +15,7 @@ import * as wjc from '@grapecity/wijmo';
     multi: true
   }]
 })
-export class ChecklistControlComponent extends ControlBase implements OnInit, ControlValueAccessor {
+export class ChecklistControlComponent extends Control implements OnInit, ControlValueAccessor {
   @ViewChild('checkList', {static: true}) viewCheckList: any;
   @Input() zCheckListType!: string;
   @Input() zValueListSeparator!: string;
@@ -23,7 +24,7 @@ export class ChecklistControlComponent extends ControlBase implements OnInit, Co
   private _controls: any;
 
   valueList: string[] = [];
-  onChange = (value: any) => {};
+  onChange = (changed: any) => {};
   onTouch = () => {};
 
   public get controls(): wjc.ObservableArray {
@@ -32,12 +33,34 @@ export class ChecklistControlComponent extends ControlBase implements OnInit, Co
     return this._controls;
   }
 
-  public set controls(value: wjc.ObservableArray) {
-    this._controls = value;
+  public set controls(pValue: wjc.ObservableArray) {
+    this._controls = pValue;
   }
 
-  constructor() {
-    super()
+  private _readOnly: boolean = false;
+
+  public get readOnly(): boolean {
+    return this._readOnly;
+  }
+
+  public set readOnly(pbValue: boolean) {
+    this._readOnly = pbValue;
+    this.invalidate();
+  }
+
+  private _autoScroll: boolean = true;
+
+  public get autoScroll(): boolean {
+    return this._autoScroll;
+  }
+
+  public set autoScroll(pbValue: boolean) {
+    if (this._autoScroll !== pbValue)
+      this._autoScroll = pbValue;
+  }
+
+  constructor(@Inject(ElementRef) private elRef: ElementRef, @Inject(Injector) injector: Injector) {
+    super(WjDirectiveBehavior.getHostElement(elRef, injector));
   }
 
   writeValue(obj: any): void {
@@ -84,10 +107,8 @@ export class ChecklistControlComponent extends ControlBase implements OnInit, Co
         this.valueList.splice(this.valueList.indexOf(e.target.value),1)
       }
     }
-    this.onChange(this.valueList.join(this.zValueListSeparator))
-    this.viewCheckList.checked = this.controls.every((option: any) => {
-      return option.isSelected == true;
-    })
+    this.onChange(this.valueList.join(this.zValueListSeparator));
+    this.viewCheckList.checked = this.controls.every(option => option.isSelected == true);
   }
 
   onSelectOnlyOneOption(e: any) {
