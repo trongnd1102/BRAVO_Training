@@ -8,8 +8,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./checklist.component.css']
 })
 export class ChecklistComponent implements OnInit, AfterViewInit {
-  @ViewChild('trading') tradingControl!: ChecklistControlComponent;
-  @ViewChild('rating') ratingControl!: ChecklistControlComponent;
+  @ViewChild('trading', {static: true}) tradingControl!: ChecklistControlComponent;
+  @ViewChild('rating', {static: true}) ratingControl!: ChecklistControlComponent;
 
   tradingData = [
     {
@@ -55,6 +55,8 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
     this.form.valueChanges.subscribe(value => {
       console.log(value)
     })
+    this.form.get('Trading')!.setValue('OrderTradingCode,CustomerCareTradingCode')
+    this.form.get('Rating')!.setValue('AttitudeRatingCode,QualityRatingCode')
   }
 
   ngAfterViewInit(): void {
@@ -62,6 +64,7 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
       this.tradingControl.addOption(this.tradingData[i].name,
         this.tradingData[i].text, this.tradingData[i].value)
     }
+    this.ratingControl.readOnly = true;
     for (let i = 0; i < this.ratingData.length; i++) {
       this.ratingControl.addOption(this.ratingData[i].name,
         this.ratingData[i].text, this.ratingData[i].value)

@@ -37,7 +37,7 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     this._controls = pValue;
   }
 
-  private _readOnly: boolean = false;
+  private _readOnly!: boolean ;
 
   public get readOnly(): boolean {
     return this._readOnly;
@@ -64,6 +64,8 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
   }
 
   writeValue(obj: any): void {
+    let value = obj
+    this.valueList = value.split(",")
   }
   registerOnChange(changed: any): void {
     this.onChange = changed
@@ -81,12 +83,20 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
       _option = new BravoOptionBox(pzName, pzText, pValue);
       this.controls.push(_option);
     }
+
+    for(let i = 0; i < this.controls.length; i++) {
+      for(let j = 0; j < this.valueList.length; j++) {
+        if(this.controls[i].value == this.valueList[j])
+          this.controls[i].checked = true;
+      }
+    }
+    this.viewCheckList.checked = this.controls.every(option => option.checked == true);
   }
 
   onSelectAll(e: any) {
     for(let i = 0; i < this.controls.length; i++) {
-      this.controls[i].isSelected = e.target.checked;
-      if(this.controls[i].isSelected) {
+      this.controls[i].checked = e.target.checked;
+      if(this.controls[i].checked) {
         if(this.valueList.indexOf(this.controls[i].value) === -1) {
           this.valueList.push(this.controls[i].value)
         }
@@ -108,13 +118,13 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
       }
     }
     this.onChange(this.valueList.join(this.zValueListSeparator));
-    this.viewCheckList.checked = this.controls.every(option => option.isSelected == true);
+    this.viewCheckList.checked = this.controls.every(option => option.checked == true);
   }
 
   onSelectOnlyOneOption(e: any) {
     for(let i = 0; i < this.controls.length; i++) {
       if(this.controls[i].value !== e.target.value) {
-        this.controls[i].isSelected = false;
+        this.controls[i].checked = false;
       }
       if(e.target.checked) {
         this.valueList = [];
