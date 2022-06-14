@@ -64,8 +64,7 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
   }
 
   writeValue(obj: any): void {
-    let value = obj
-    this.valueList = value.split(",")
+    this.valueList = obj.split(",")
   }
   registerOnChange(changed: any): void {
     this.onChange = changed

@@ -55,7 +55,7 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
     this.form.valueChanges.subscribe(value => {
       console.log(value)
     })
-    this.form.get('Trading')!.setValue('OrderTradingCode,CustomerCareTradingCode')
+    this.form.get('Trading')!.setValue('OrderTradingCode')
     this.form.get('Rating')!.setValue('AttitudeRatingCode,QualityRatingCode')
   }
 
