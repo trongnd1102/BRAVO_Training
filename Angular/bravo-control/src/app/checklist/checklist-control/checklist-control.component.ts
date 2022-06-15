@@ -159,29 +159,16 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
   public override refresh(fullUpdate?: boolean) {
     super.refresh(fullUpdate);
 
-    // let _css = {'flex-flow': 'row'}
+    let _css = {'flex-flow': 'row'}
 
-    // if (this.flowDirection == FlowDirection.TopDown || this.flowDirection == FlowDirection.BottomUp) {
-    //     _css['flex-flow'] = this.flowDirection == FlowDirection.TopDown ? 'column' : 'column-reverse';
-    // } else if (this.flowDirection == FlowDirection.RightToLeft) {
-    //     _css['flex-flow'] = 'row-reverse';
-    // }
+    if (this.flowDirection == FlowDirection.TopDown || this.flowDirection == FlowDirection.BottomUp) {
+        _css['flex-flow'] = this.flowDirection == FlowDirection.TopDown ? 'column' : 'column-reverse';
+    } else if (this.flowDirection == FlowDirection.RightToLeft) {
+        _css['flex-flow'] = 'row-reverse';
+    }
 
-    // wjc.setCss(this.cssOption, _css);
-
-    switch (this.flowDirection) {
-      case FlowDirection.TopDown:
-        this.cssOption.nativeElement.setAttribute("style","flex-flow: column");
-        break;
-      case FlowDirection.BottomUp:
-        this.cssOption.nativeElement.setAttribute("style","flex-flow: column-reverse");
-        break;
-      case FlowDirection.LeftToRight:
-        this.cssOption.nativeElement.setAttribute("style","flex-flow: row");
-        break;
-      case FlowDirection.RightToLeft:
-        this.cssOption.nativeElement.setAttribute("style","flex-flow: row-reverse");
-        break;
+    if(this.cssOption) {
+      wjc.setCss(this.cssOption.nativeElement, _css);
     }
   }
 }
