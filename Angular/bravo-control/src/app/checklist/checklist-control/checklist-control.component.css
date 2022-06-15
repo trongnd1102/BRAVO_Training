@@ -13,6 +13,14 @@
   margin-bottom: 5px;
 }
 
+.list-option {
+  display: flex;
+}
+
+.list-option label {
+  margin-right: 8px;
+}
+
 .input-one-option {
   display: none;
 }

@@ -2,6 +2,7 @@ import { Component, ElementRef, Inject, Injector, Input, OnInit, ViewChild } fro
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Control } from '@grapecity/wijmo';
 import { WjDirectiveBehavior } from '@grapecity/wijmo.angular2.directivebase';
+import { FlowDirection } from '../flow-direction';
 
 import * as wjc from '@grapecity/wijmo';
 
@@ -17,6 +18,7 @@ import * as wjc from '@grapecity/wijmo';
 })
 export class ChecklistControlComponent extends Control implements OnInit, ControlValueAccessor {
   @ViewChild('checkList', {static: true}) viewCheckList: any;
+  @ViewChild('option', {static: true}) cssOption!: ElementRef;
   @Input() zCheckListType!: string;
   @Input() zValueListSeparator!: string;
   @Input() bAllowSelectMultiValue!: boolean;
@@ -59,6 +61,22 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
       this._autoScroll = pbValue;
   }
 
+  private _flowDirection: FlowDirection = FlowDirection.LeftToRight;
+
+  // @Enum(FlowDirection)
+  public get flowDirection(): FlowDirection {
+    return this._flowDirection;
+  }
+
+  public set flowDirection(value: FlowDirection) {
+    if (this._flowDirection == value)
+      return;
+
+    this._flowDirection = value;
+
+    this.invalidate();
+  }
+
   constructor(@Inject(ElementRef) private elRef: ElementRef, @Inject(Injector) injector: Injector) {
     super(WjDirectiveBehavior.getHostElement(elRef, injector));
   }
@@ -74,6 +92,7 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
   }
 
   ngOnInit(): void {
+    this.refresh();
   }
 
   public addOption(pzName: string, pzText: string, pValue: any) {
@@ -82,7 +101,9 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
       _option = new BravoOptionBox(pzName, pzText, pValue);
       this.controls.push(_option);
     }
+  }
 
+  checkedCheckBox() {
     for(let i = 0; i < this.controls.length; i++) {
       for(let j = 0; j < this.valueList.length; j++) {
         if(this.controls[i].value == this.valueList[j])
@@ -133,6 +154,35 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
       }
     }
     this.onChange(this.valueList.toString())
+  }
+
+  public override refresh(fullUpdate?: boolean) {
+    super.refresh(fullUpdate);
+
+    // let _css = {'flex-flow': 'row'}
+
+    // if (this.flowDirection == FlowDirection.TopDown || this.flowDirection == FlowDirection.BottomUp) {
+    //     _css['flex-flow'] = this.flowDirection == FlowDirection.TopDown ? 'column' : 'column-reverse';
+    // } else if (this.flowDirection == FlowDirection.RightToLeft) {
+    //     _css['flex-flow'] = 'row-reverse';
+    // }
+
+    // wjc.setCss(this.cssOption, _css);
+
+    switch (this.flowDirection) {
+      case FlowDirection.TopDown:
+        this.cssOption.nativeElement.setAttribute("style","flex-flow: column");
+        break;
+      case FlowDirection.BottomUp:
+        this.cssOption.nativeElement.setAttribute("style","flex-flow: column-reverse");
+        break;
+      case FlowDirection.LeftToRight:
+        this.cssOption.nativeElement.setAttribute("style","flex-flow: row");
+        break;
+      case FlowDirection.RightToLeft:
+        this.cssOption.nativeElement.setAttribute("style","flex-flow: row-reverse");
+        break;
+    }
   }
 }
 

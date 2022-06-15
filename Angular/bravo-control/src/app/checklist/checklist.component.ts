@@ -1,6 +1,7 @@
 import { ChecklistControlComponent } from './checklist-control/checklist-control.component';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { FlowDirection } from './flow-direction';
 
 @Component({
   selector: 'app-checklist',
@@ -55,8 +56,12 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
     this.form.valueChanges.subscribe(value => {
       console.log(value)
     })
+
     this.form.get('Trading')!.setValue('OrderTradingCode')
     this.form.get('Rating')!.setValue('AttitudeRatingCode,QualityRatingCode')
+
+    this.ratingControl.readOnly = true;
+    this.ratingControl.flowDirection = FlowDirection.TopDown;
   }
 
   ngAfterViewInit(): void {
@@ -64,11 +69,12 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
       this.tradingControl.addOption(this.tradingData[i].name,
         this.tradingData[i].text, this.tradingData[i].value)
     }
-    this.ratingControl.readOnly = true;
+    this.tradingControl.checkedCheckBox();
     for (let i = 0; i < this.ratingData.length; i++) {
       this.ratingControl.addOption(this.ratingData[i].name,
         this.ratingData[i].text, this.ratingData[i].value)
     }
+    this.ratingControl.checkedCheckBox();
   }
 
 }

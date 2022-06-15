@@ -8,16 +8,18 @@
           [checked]="viewCheckList.checked"
           [disabled]="readOnly">
       <label for="CheckListType" [class.label-one-option]="bAllowSelectMultiValue">{{zCheckListType}}</label>
-      <ul class="list-option">
+      <ul #option class="list-option">
         <li *ngFor="let control of controls">
-          <input type="checkbox" id="control.value" [value]="control.value"
+          <input type="checkbox" id="control.value"
               *ngIf="!bAllowSelectMultiValue"
+              [value]="control.value"
               [(ngModel)]="control.checked"
               (change)="onSelectOption($event)"
               [checked]="control.checked"
               [disabled]="readOnly">
-          <input type="checkbox" id="control.value" [value]="control.value"
+          <input type="checkbox" id="control.value"
               *ngIf="bAllowSelectMultiValue"
+              [value]="control.value"
               [(ngModel)]="control.checked"
               (change)="onSelectOnlyOneOption($event)"
               [checked]="control.checked"
