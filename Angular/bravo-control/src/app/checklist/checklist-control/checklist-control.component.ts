@@ -19,9 +19,36 @@ import * as wjc from '@grapecity/wijmo';
 export class ChecklistControlComponent extends Control implements OnInit, ControlValueAccessor {
   @ViewChild('checkList', {static: true}) viewCheckList: any;
   @ViewChild('option', {static: true}) cssOption!: ElementRef;
-  @Input() zCheckListType!: string;
-  @Input() zValueListSeparator!: string;
-  @Input() bAllowSelectMultiValue!: boolean;
+
+  private _zText!: string
+
+  public get zText(): string {
+    return this._zText;
+  }
+
+  public set zText(pzValue: string) {
+    this._zText = pzValue;
+  }
+
+  private _zValueListSeparator!: string;
+
+  public get zValueListSeparator(): string {
+    return this._zValueListSeparator;
+  }
+
+  public set zValueListSeparator(pzValue: string) {
+    this._zValueListSeparator = pzValue;
+  }
+
+  private _bAllowSelectMultiValue!: boolean;
+
+  public get bAllowSelectMultiValue(): boolean {
+    return this._bAllowSelectMultiValue;
+  }
+
+  public set bAllowSelectMultiValue(pbValue: boolean) {
+    this._bAllowSelectMultiValue = pbValue;
+  }
 
   private _controls: any;
 
@@ -82,7 +109,8 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
   }
 
   writeValue(obj: any): void {
-    this.valueList = obj.split(",")
+    if(obj)
+      this.valueList = obj.split(",")
   }
   registerOnChange(changed: any): void {
     this.onChange = changed
@@ -137,6 +165,7 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
         this.valueList.splice(this.valueList.indexOf(e.target.value),1)
       }
     }
+    console.log(this.valueList)
     this.onChange(this.valueList.join(this.zValueListSeparator));
     this.viewCheckList.checked = this.controls.every(option => option.checked == true);
   }

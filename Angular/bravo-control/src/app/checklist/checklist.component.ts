@@ -57,10 +57,16 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
       console.log(value)
     })
 
-    this.form.get('Trading')!.setValue('OrderTradingCode')
-    this.form.get('Rating')!.setValue('AttitudeRatingCode,QualityRatingCode')
+    // this.form.get('Trading')!.setValue('OrderTradingCode');
+    this.tradingControl.zText = "Loại giao dịch";
+    this.tradingControl.zValueListSeparator = ",";
+    this.tradingControl.bAllowSelectMultiValue = false
 
-    this.ratingControl.readOnly = true;
+    // this.form.get('Rating')!.setValue('AttitudeRatingCode,QualityRatingCode');
+    this.ratingControl.zText = "Loại đánh giá";
+    this.ratingControl.zValueListSeparator = ",";
+    this.ratingControl.bAllowSelectMultiValue = false
+    this.ratingControl.readOnly = false;
     this.ratingControl.flowDirection = FlowDirection.TopDown;
   }
 

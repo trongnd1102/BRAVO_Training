@@ -2,17 +2,11 @@
   <div class="checklist">
     <form [formGroup]="form">
       <div class="trading">
-        <app-checklist-control #trading formControlName="Trading"
-            [zCheckListType]="'Loại giao dịch'"
-            [zValueListSeparator]="','"
-            [bAllowSelectMultiValue]=false>
+        <app-checklist-control #trading formControlName="Trading">
         </app-checklist-control>
       </div>
       <div class="rating">
-        <app-checklist-control #rating formControlName="Rating"
-            [zCheckListType]="'Loại đánh giá'"
-            [zValueListSeparator]="','"
-            [bAllowSelectMultiValue]=false>
+        <app-checklist-control #rating formControlName="Rating">
         </app-checklist-control>
       </div>
     </form>
