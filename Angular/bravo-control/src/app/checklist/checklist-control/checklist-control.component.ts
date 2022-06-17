@@ -3,6 +3,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Control } from '@grapecity/wijmo';
 import { WjDirectiveBehavior } from '@grapecity/wijmo.angular2.directivebase';
 import { FlowDirection } from '../flow-direction';
+import { AppearanceStyleEnum } from '../appearance-style';
 
 import * as wjc from '@grapecity/wijmo';
 
@@ -50,11 +51,22 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     this._bAllowSelectMultiValue = pbValue;
   }
 
-  private _controls: any;
+  private _checkAppearance: AppearanceStyleEnum = AppearanceStyleEnum.Checkbox;
 
-  valueList: string[] = [];
+  public get checkAppearance(): AppearanceStyleEnum {
+    return this._checkAppearance;
+  }
+
+  public set checkAppearance(pzValue: AppearanceStyleEnum) {
+    this._checkAppearance = pzValue;
+  }
+
+
+  private valueList: string[] = [];
   onChange = (changed: any) => {};
   onTouch = () => {};
+
+  private _controls: any;
 
   public get controls(): wjc.ObservableArray {
     if (!this._controls)
@@ -131,7 +143,7 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     }
   }
 
-  checkedCheckBox() {
+  updateCheckBox() {
     for(let i = 0; i < this.controls.length; i++) {
       for(let j = 0; j < this.valueList.length; j++) {
         if(this.controls[i].value == this.valueList[j])
@@ -165,7 +177,6 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
         this.valueList.splice(this.valueList.indexOf(e.target.value),1)
       }
     }
-    console.log(this.valueList)
     this.onChange(this.valueList.join(this.zValueListSeparator));
     this.viewCheckList.checked = this.controls.every(option => option.checked == true);
   }

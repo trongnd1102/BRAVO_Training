@@ -1,32 +1,36 @@
-<div class="checklist-control">
-  <ul style="padding: 0">
-    <li>
-      <input #checkList type="checkbox" id="CheckListType"
-          [class.input-one-option]="bAllowSelectMultiValue"
-          (change)="onSelectAll($event)"
-          [(ngModel)]="viewCheckList.checked"
-          [checked]="viewCheckList.checked"
-          [disabled]="readOnly">
-      <label for="CheckListType" [class.label-one-option]="bAllowSelectMultiValue">{{zText}}</label>
-      <ul #option class="list-option">
-        <li *ngFor="let control of controls">
-          <input type="checkbox" id="control.value"
-              *ngIf="!bAllowSelectMultiValue"
-              [value]="control.value"
-              [(ngModel)]="control.checked"
-              (change)="onSelectOption($event)"
-              [checked]="control.checked"
-              [disabled]="readOnly">
-          <input type="checkbox" id="control.value"
-              *ngIf="bAllowSelectMultiValue"
-              [value]="control.value"
-              [(ngModel)]="control.checked"
-              (change)="onSelectOnlyOneOption($event)"
-              [checked]="control.checked"
-              [disabled]="readOnly">
-          <label for="control.value">{{control.text}}</label>
-        </li>
-      </ul>
-    </li>
-  </ul>
+<div class="checklist-control" >
+  <div class="checkbox" [ngStyle]="{'display': (checkAppearance == 0) ? '' : 'none'}">
+    <ul style="padding: 0">
+      <li>
+        <input #checkList type="checkbox"
+            (change)="onSelectAll($event)"
+            [(ngModel)]="viewCheckList.checked"
+            [checked]="viewCheckList.checked"
+            [disabled]="readOnly || !bAllowSelectMultiValue">
+        <label>{{zText}}</label>
+        <ul #option class="list-option">
+          <li *ngFor="let control of controls">
+            <input type="checkbox" *ngIf="bAllowSelectMultiValue"
+                [value]="control.value"
+                [(ngModel)]="control.checked"
+                (change)="onSelectOption($event)"
+                [checked]="control.checked"
+                [disabled]="readOnly">
+            <input type="checkbox" *ngIf="!bAllowSelectMultiValue"
+                [value]="control.value"
+                [(ngModel)]="control.checked"
+                (change)="onSelectOnlyOneOption($event)"
+                [checked]="control.checked"
+                [disabled]="readOnly">
+            <label>{{control.text}}</label>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="button" *ngIf="checkAppearance == 1">
+    <button>Theo tháng</button>
+    <button>Theo quý</button>
+    <button>Theo năm</button>
+  </div>
 </div>

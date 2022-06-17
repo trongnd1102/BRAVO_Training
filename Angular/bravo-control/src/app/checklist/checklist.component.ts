@@ -2,6 +2,7 @@ import { ChecklistControlComponent } from './checklist-control/checklist-control
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FlowDirection } from './flow-direction';
+import { AppearanceStyleEnum } from './appearance-style';
 
 @Component({
   selector: 'app-checklist',
@@ -11,6 +12,7 @@ import { FlowDirection } from './flow-direction';
 export class ChecklistComponent implements OnInit, AfterViewInit {
   @ViewChild('trading', {static: true}) tradingControl!: ChecklistControlComponent;
   @ViewChild('rating', {static: true}) ratingControl!: ChecklistControlComponent;
+  @ViewChild('timing', {static: true}) timingControl!: ChecklistControlComponent;
 
   tradingData = [
     {
@@ -49,6 +51,7 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
     this.form = this.fb.group({
       Trading: ['', {updateOn: 'change'}],
       Rating: ['', {updateOn: 'change'}],
+      Timing: ['', {updateOn: 'change'}],
     });
   }
 
@@ -60,14 +63,16 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
     // this.form.get('Trading')!.setValue('OrderTradingCode');
     this.tradingControl.zText = "Loại giao dịch";
     this.tradingControl.zValueListSeparator = ",";
-    this.tradingControl.bAllowSelectMultiValue = false
+    this.tradingControl.bAllowSelectMultiValue = false;
 
     // this.form.get('Rating')!.setValue('AttitudeRatingCode,QualityRatingCode');
     this.ratingControl.zText = "Loại đánh giá";
     this.ratingControl.zValueListSeparator = ",";
-    this.ratingControl.bAllowSelectMultiValue = false
+    this.ratingControl.bAllowSelectMultiValue = true;
     this.ratingControl.readOnly = false;
     this.ratingControl.flowDirection = FlowDirection.TopDown;
+
+    this.timingControl.checkAppearance = AppearanceStyleEnum.Button;
   }
 
   ngAfterViewInit(): void {
@@ -75,12 +80,12 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
       this.tradingControl.addOption(this.tradingData[i].name,
         this.tradingData[i].text, this.tradingData[i].value)
     }
-    this.tradingControl.checkedCheckBox();
+    this.tradingControl.updateCheckBox();
     for (let i = 0; i < this.ratingData.length; i++) {
       this.ratingControl.addOption(this.ratingData[i].name,
         this.ratingData[i].text, this.ratingData[i].value)
     }
-    this.ratingControl.checkedCheckBox();
+    this.ratingControl.updateCheckBox();
   }
 
 }
