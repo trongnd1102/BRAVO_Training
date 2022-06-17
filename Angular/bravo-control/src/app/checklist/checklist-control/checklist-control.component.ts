@@ -168,7 +168,17 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
 
   onSelectOption(e: any) {
     if(e.target.checked) {
-      if(this.valueList.indexOf(e.target.value) === -1) {
+      if(this.bAllowSelectMultiValue){
+        if(this.valueList.indexOf(e.target.value) === -1) {
+          this.valueList.push(e.target.value)
+        }
+      } else {
+        for(let i = 0; i < this.controls.length; i++) {
+          if(this.controls[i].value !== e.target.value) {
+            this.controls[i].checked = false;
+          }
+        }
+        this.valueList = [];
         this.valueList.push(e.target.value)
       }
     } else {
@@ -178,21 +188,6 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     }
     this.onChange(this.valueList.join(this.zValueListSeparator));
     this.viewCheckList.checked = this.controls.every(option => option.checked == true);
-  }
-
-  onSelectOnlyOneOption(e: any) {
-    for(let i = 0; i < this.controls.length; i++) {
-      if(this.controls[i].value !== e.target.value) {
-        this.controls[i].checked = false;
-      }
-      if(e.target.checked) {
-        this.valueList = [];
-        this.valueList.push(e.target.value)
-      } else {
-        this.valueList = [];
-      }
-    }
-    this.onChange(this.valueList.toString())
   }
 
   onSelectTime(e: any) {

@@ -10,19 +10,11 @@
         <label>{{zText}}</label>
         <ul #option class="list-option">
           <li *ngFor="let control of controls">
-            <label *ngIf="bAllowSelectMultiValue">
+            <label>
               <input type="checkbox"
                 [value]="control.value"
                 [(ngModel)]="control.checked"
                 (change)="onSelectOption($event)"
-                [checked]="control.checked"
-                [disabled]="readOnly">{{control.text}}
-            </label>
-            <label *ngIf="!bAllowSelectMultiValue">
-              <input type="checkbox"
-                [value]="control.value"
-                [(ngModel)]="control.checked"
-                (change)="onSelectOnlyOneOption($event)"
                 [checked]="control.checked"
                 [disabled]="readOnly">{{control.text}}
             </label>
