@@ -21,6 +21,10 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
   @ViewChild('checkList', {static: true}) viewCheckList: any;
   @ViewChild('option', {static: true}) cssOption!: ElementRef;
 
+  private valueList: string[] = [];
+  onChange = (changed: any) => {};
+  onTouch = () => {};
+
   private _zText!: string
 
   public get zText(): string {
@@ -57,14 +61,9 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     return this._checkAppearance;
   }
 
-  public set checkAppearance(pzValue: AppearanceStyleEnum) {
-    this._checkAppearance = pzValue;
+  public set checkAppearance(pValue: AppearanceStyleEnum) {
+    this._checkAppearance = pValue;
   }
-
-
-  private valueList: string[] = [];
-  onChange = (changed: any) => {};
-  onTouch = () => {};
 
   private _controls: any;
 
@@ -107,11 +106,11 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     return this._flowDirection;
   }
 
-  public set flowDirection(value: FlowDirection) {
-    if (this._flowDirection == value)
+  public set flowDirection(pValue: FlowDirection) {
+    if (this._flowDirection == pValue)
       return;
 
-    this._flowDirection = value;
+    this._flowDirection = pValue;
 
     this.invalidate();
   }
@@ -194,6 +193,19 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
       }
     }
     this.onChange(this.valueList.toString())
+  }
+
+  onSelectTime(e: any) {
+    if(e.target.nodeName === "BUTTON") {
+      var current = document.getElementsByClassName("active");
+
+      if (current.length > 0) {
+        current[0].className = current[0].className.replace(" active", "");
+      }
+
+      e.target.className += " active";
+    }
+    this.onChange(e.target.value)
   }
 
   public override refresh(fullUpdate?: boolean) {

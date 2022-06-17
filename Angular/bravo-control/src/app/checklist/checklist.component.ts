@@ -45,6 +45,24 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
     }
   ]
 
+  timingData = [
+    {
+      name: "Month",
+      text: "Theo tháng",
+      value: "MonthCode"
+    },
+    {
+      name: "Quarter",
+      text: "Theo quý",
+      value: "QuarterCode"
+    },
+    {
+      name: "Year",
+      text: "Theo năm",
+      value: "YearCode"
+    }
+  ]
+
   form: FormGroup
 
   constructor(private fb: FormBuilder) {
@@ -81,11 +99,17 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
         this.tradingData[i].text, this.tradingData[i].value)
     }
     this.tradingControl.updateCheckBox();
+
     for (let i = 0; i < this.ratingData.length; i++) {
       this.ratingControl.addOption(this.ratingData[i].name,
         this.ratingData[i].text, this.ratingData[i].value)
     }
     this.ratingControl.updateCheckBox();
+
+    for (let i = 0; i < this.timingData.length; i++) {
+      this.timingControl.addOption(this.timingData[i].name,
+        this.timingData[i].text, this.timingData[i].value)
+    }
   }
 
 }

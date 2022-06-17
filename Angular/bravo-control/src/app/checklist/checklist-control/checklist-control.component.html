@@ -1,5 +1,5 @@
 <div class="checklist-control" >
-  <div class="checkbox" [ngStyle]="{'display': (checkAppearance == 0) ? '' : 'none'}">
+  <div class="checkbox-appearance" [ngStyle]="{'display': (checkAppearance == 0) ? '' : 'none'}">
     <ul style="padding: 0">
       <li>
         <input #checkList type="checkbox"
@@ -28,9 +28,9 @@
       </li>
     </ul>
   </div>
-  <div class="button" *ngIf="checkAppearance == 1">
-    <button>Theo tháng</button>
-    <button>Theo quý</button>
-    <button>Theo năm</button>
+  <div class="button-appearance" *ngIf="checkAppearance == 1">
+    <div *ngFor="let control of controls" (click)="onSelectTime($event)">
+      <button class="btn-select" [value]="control.value">{{control.text}}</button>
+    </div>
   </div>
 </div>
