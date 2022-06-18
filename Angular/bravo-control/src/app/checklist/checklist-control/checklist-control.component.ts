@@ -167,40 +167,40 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
   }
 
   onSelectOption(e: any) {
-    if(e.target.checked) {
-      if(this.bAllowSelectMultiValue){
-        if(this.valueList.indexOf(e.target.value) === -1) {
+    if(this.checkAppearance == AppearanceStyleEnum.Checkbox) {
+      if(e.target.checked) {
+        if(this.bAllowSelectMultiValue) {
+          if(this.valueList.indexOf(e.target.value) === -1) {
+            this.valueList.push(e.target.value)
+          }
+        } else {
+          for(let i = 0; i < this.controls.length; i++) {
+            if(this.controls[i].value !== e.target.value) {
+              this.controls[i].checked = false;
+            }
+          }
+          this.valueList = [];
           this.valueList.push(e.target.value)
         }
       } else {
-        for(let i = 0; i < this.controls.length; i++) {
-          if(this.controls[i].value !== e.target.value) {
-            this.controls[i].checked = false;
-          }
+        if(this.valueList.indexOf(e.target.value) !== -1) {
+          this.valueList.splice(this.valueList.indexOf(e.target.value),1)
         }
-        this.valueList = [];
-        this.valueList.push(e.target.value)
       }
-    } else {
-      if(this.valueList.indexOf(e.target.value) !== -1) {
-        this.valueList.splice(this.valueList.indexOf(e.target.value),1)
+      this.onChange(this.valueList.join(this.zValueListSeparator));
+      this.viewCheckList.checked = this.controls.every(option => option.checked == true);
+    } else if (this.checkAppearance == AppearanceStyleEnum.Button) {
+      if(e.target.nodeName === "INPUT") {
+        var current = document.getElementsByClassName("active");
+
+        if (current.length > 0) {
+          current[0].className = current[0].className.replace(" active", "");
+        }
+        e.target.parentElement.className += " active";
       }
+      this.onChange(e.target.value)
     }
-    this.onChange(this.valueList.join(this.zValueListSeparator));
-    this.viewCheckList.checked = this.controls.every(option => option.checked == true);
-  }
 
-  onSelectTime(e: any) {
-    if(e.target.nodeName === "BUTTON") {
-      var current = document.getElementsByClassName("active");
-
-      if (current.length > 0) {
-        current[0].className = current[0].className.replace(" active", "");
-      }
-
-      e.target.className += " active";
-    }
-    this.onChange(e.target.value)
   }
 
   public override refresh(fullUpdate?: boolean) {

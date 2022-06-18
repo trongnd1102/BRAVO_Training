@@ -10,25 +10,24 @@
 }
 
 .checklist-control label {
-  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.checklist-control input {
+  vertical-align: middle;
+}
+
+.checklist-control span {
+  vertical-align: middle;
 }
 
 .list-option {
   display: flex;
 }
 
-.list-option label {
-  margin-right: 8px;
-}
-
 .button-appearance {
-  display: flex;
-  flex-direction: row;
-}
-
-button {
   background-color: #eee;
-  margin-right: 3px;
+  margin-right: 5px;
   border: none;
   color: black;
   padding: 5px;
@@ -37,7 +36,11 @@ button {
   display: inline-block;
 }
 
-.active, button:hover {
+.active, .button-appearance:hover {
   background-color: #58257b;
   color: white;
+}
+
+.button-appearance input[type=checkbox] {
+  display: none;
 }

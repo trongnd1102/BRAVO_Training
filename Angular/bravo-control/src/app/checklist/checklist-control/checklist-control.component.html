@@ -1,31 +1,26 @@
 <div class="checklist-control" >
-  <div class="checkbox-appearance" [ngStyle]="{'display': (checkAppearance == 0) ? '' : 'none'}">
     <ul style="padding: 0">
       <li>
-        <input #checkList type="checkbox"
+        <label [ngStyle]="{'display': (checkAppearance == 0) ? '' : 'none'}">
+          <input #checkList type="checkbox"
             (change)="onSelectAll($event)"
             [(ngModel)]="viewCheckList.checked"
             [checked]="viewCheckList.checked"
-            [disabled]="readOnly || !bAllowSelectMultiValue">
-        <label>{{zText}}</label>
-        <ul #option class="list-option">
-          <li *ngFor="let control of controls">
-            <label>
-              <input type="checkbox"
-                [value]="control.value"
-                [(ngModel)]="control.checked"
-                (change)="onSelectOption($event)"
-                [checked]="control.checked"
-                [disabled]="readOnly">{{control.text}}
-            </label>
-          </li>
-        </ul>
+            [disabled]="readOnly || !bAllowSelectMultiValue"><span>{{zText}}</span>
+        </label>
+          <ul #option class="list-option"
+              [ngStyle]="{'padding-inline-start': (checkAppearance == 1) ? '5px' : ''}">
+            <li *ngFor="let control of controls">
+              <label [class.button-appearance]="checkAppearance == 1">
+                <input type="Checkbox"
+                  [value]="control.value"
+                  [(ngModel)]="control.checked"
+                  (change)="onSelectOption($event)"
+                  [checked]="control.checked"
+                  [disabled]="readOnly"><span>{{control.text}}</span>
+              </label>
+            </li>
+          </ul>
       </li>
     </ul>
-  </div>
-  <div class="button-appearance" *ngIf="checkAppearance == 1">
-    <div *ngFor="let control of controls" (click)="onSelectTime($event)">
-      <button class="btn-select" [value]="control.value">{{control.text}}</button>
-    </div>
-  </div>
 </div>
