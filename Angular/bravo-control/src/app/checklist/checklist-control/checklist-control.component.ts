@@ -1,4 +1,4 @@
-import { Component, ElementRef, Inject, Injector, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, Injector, OnInit, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Control } from '@grapecity/wijmo';
 import { WjDirectiveBehavior } from '@grapecity/wijmo.angular2.directivebase';
@@ -45,7 +45,7 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     this._zValueListSeparator = pzValue;
   }
 
-  private _bAllowSelectMultiValue!: boolean;
+  private _bAllowSelectMultiValue: boolean = true;
 
   public get bAllowSelectMultiValue(): boolean {
     return this._bAllowSelectMultiValue;
@@ -167,40 +167,46 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
   }
 
   onSelectOption(e: any) {
-    if(this.checkAppearance == AppearanceStyleEnum.Checkbox) {
-      if(e.target.checked) {
-        if(this.bAllowSelectMultiValue) {
-          if(this.valueList.indexOf(e.target.value) === -1) {
-            this.valueList.push(e.target.value)
-          }
-        } else {
-          for(let i = 0; i < this.controls.length; i++) {
-            if(this.controls[i].value !== e.target.value) {
-              this.controls[i].checked = false;
-            }
-          }
-          this.valueList = [];
+    if(e.target.checked) {
+      if(this.bAllowSelectMultiValue) {
+        if(this.valueList.indexOf(e.target.value) === -1) {
           this.valueList.push(e.target.value)
         }
-      } else {
-        if(this.valueList.indexOf(e.target.value) !== -1) {
-          this.valueList.splice(this.valueList.indexOf(e.target.value),1)
-        }
-      }
-      this.onChange(this.valueList.join(this.zValueListSeparator));
-      this.viewCheckList.checked = this.controls.every(option => option.checked == true);
-    } else if (this.checkAppearance == AppearanceStyleEnum.Button) {
-      if(e.target.nodeName === "INPUT") {
-        var current = document.getElementsByClassName("active");
 
-        if (current.length > 0) {
-          current[0].className = current[0].className.replace(" active", "");
+        if(this.checkAppearance == AppearanceStyleEnum.Button) {
+          e.target.parentElement.className += " active";
         }
-        e.target.parentElement.className += " active";
+      } else {
+        for(let i = 0; i < this.controls.length; i++) {
+          if(this.controls[i].value !== e.target.value) {
+            this.controls[i].checked = false;
+          }
+        }
+
+        if(this.checkAppearance == AppearanceStyleEnum.Button) {
+          var current = document.getElementsByClassName("active");
+          if (current.length > 0) {
+            current[0].className = current[0].className.replace(" active", "");
+          }
+          e.target.parentElement.className += " active";
+        }
+
+        this.valueList = [];
+        this.valueList.push(e.target.value)
       }
-      this.onChange(e.target.value)
+    } else {
+      if(this.valueList.indexOf(e.target.value) !== -1) {
+        this.valueList.splice(this.valueList.indexOf(e.target.value),1)
+      }
+
+      if(this.checkAppearance == AppearanceStyleEnum.Button) {
+        e.target.parentElement.className = "button-appearance";
+      }
     }
 
+    this.viewCheckList.checked = this.controls.every(option => option.checked == true);
+
+    this.onChange(this.valueList.join(this.zValueListSeparator));
   }
 
   public override refresh(fullUpdate?: boolean) {
