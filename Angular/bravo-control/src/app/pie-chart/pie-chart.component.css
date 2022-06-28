@@ -1,0 +1,7 @@
+.chart {
+  height: calc(100vh - 139px);
+}
+
+.wj-flexchart {
+  height: 90%;
+}
