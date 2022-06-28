@@ -4,6 +4,8 @@ import { Control } from '@grapecity/wijmo';
 import { WjDirectiveBehavior } from '@grapecity/wijmo.angular2.directivebase';
 import { FlowDirection } from '../flow-direction';
 import { AppearanceStyleEnum } from '../appearance-style';
+import { BravoGraphicsRenderer } from '../graphics/bravo.graphics.renderer';
+import { Font } from '../graphics/font';
 
 import * as wjc from '@grapecity/wijmo';
 
@@ -22,8 +24,6 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
   @ViewChild('option', {static: true}) cssOption!: ElementRef;
 
   private valueList: string[] = [];
-  onChange = (changed: any) => {};
-  onTouch = () => {};
 
   private _zText!: string
 
@@ -115,9 +115,38 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     this.invalidate();
   }
 
+  private _maximumSize: wjc.Size = new wjc.Size();
+
+  public get maximumSize(): wjc.Size {
+        return this._maximumSize;
+    }
+
+  public set maximumSize(pSize: wjc.Size) {
+      if (this._maximumSize.equals(pSize)) return;
+
+      this._maximumSize = pSize;
+      this.invalidate();
+  }
+
+  private _minimumSize: wjc.Size = new wjc.Size();
+
+  public get minimumSize(): wjc.Size {
+      return this._minimumSize;
+  }
+
+  public set minimumSize(pSize: wjc.Size) {
+      if (this._minimumSize.equals(pSize)) return;
+
+      this._minimumSize = pSize;
+      this.invalidate;
+  }
+
   constructor(@Inject(ElementRef) private elRef: ElementRef, @Inject(Injector) injector: Injector) {
     super(WjDirectiveBehavior.getHostElement(elRef, injector));
   }
+
+  onChange = (changed: any) => {};
+  onTouch = () => {};
 
   writeValue(obj: any): void {
     if(obj)
@@ -205,8 +234,57 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     }
 
     this.viewCheckList.checked = this.controls.every(option => option.checked == true);
-
+    let _size = BravoGraphicsRenderer.measureString(e.target.value, new Font('Segoe UI', 9.75))!;
+    console.log(_size)
     this.onChange(this.valueList.join(this.zValueListSeparator));
+  }
+
+  public getPreferredSize() {
+    let _sz = new wjc.Size(),
+        _nW = 0, _nH = 0;
+
+    let _nCtrls = this.controls.length;
+
+    // Test measureString
+    let _size1 = BravoGraphicsRenderer.measureString(this._zText, new Font('Segoe UI', 15))!;
+
+    for (let i = 0; i < _nCtrls; i++) {
+        let _ctrl = this.controls[i];
+        let _zText = _ctrl.text;
+
+        let _size = BravoGraphicsRenderer.measureString(_zText, new Font('Segoe UI', 9.75))!;
+        if (i == 0) {
+            _nW += (_size.width + 23);
+            _nH += (_size.height > 21) ? _size.height + 4 : 25;
+        }
+        else if (this.flowDirection == FlowDirection.LeftToRight || this.flowDirection == FlowDirection.RightToLeft)
+            _nW += (_size.width + 23);
+        else if (this.flowDirection == FlowDirection.TopDown || this.flowDirection == FlowDirection.BottomUp)
+            _nH += (_size.height > 21) ? _size.height + 4 : 25;
+
+    }
+
+    if (!this.minimumSize.equals(new wjc.Size())) {
+        if (_nW < this.minimumSize.width)
+            _nW = this.minimumSize.width;
+
+        if (_nH < this.minimumSize.height)
+            _nH = this.minimumSize.height;
+    }
+
+    if (!this.maximumSize.equals(new wjc.Size())) {
+        if (_nW > this.maximumSize.width)
+            _nW = this.maximumSize.width;
+
+        if (_nH > this.maximumSize.height)
+            _nH = this.maximumSize.height;
+    }
+
+    _sz.width = _nW;
+    _sz.height = _nH;
+
+    // return _sz;
+    return _size1;
   }
 
   public override refresh(fullUpdate?: boolean) {
