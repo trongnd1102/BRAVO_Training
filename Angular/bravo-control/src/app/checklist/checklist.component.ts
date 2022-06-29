@@ -88,7 +88,7 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
     this.ratingControl.zText = "Loại đánh giá";
     this.ratingControl.flowDirection = FlowDirection.TopDown;
 
-    // this.timingControl.checkAppearance = AppearanceStyleEnum.Button;
+    this.timingControl.checkAppearance = AppearanceStyleEnum.Button;
   }
 
   ngAfterViewInit(): void {
@@ -102,14 +102,17 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
         this.ratingData[i].text, this.ratingData[i].value)
     }
 
-    // for (let i = 0; i < this.timingData.length; i++) {
-    //   this.timingControl.addOption(this.timingData[i].name,
-    //     this.timingData[i].text, this.timingData[i].value)
-    // }
+    for (let i = 0; i < this.timingData.length; i++) {
+      this.timingControl.addOption(this.timingData[i].name,
+        this.timingData[i].text, this.timingData[i].value)
+    }
 
+    // Calc width
     let nWidthTrade = this.tradingControl.getPreferredSize().width;
     let nWidthRate = this.ratingControl.getPreferredSize().width;
-    let nWidth = (nWidthTrade > nWidthRate ? nWidthTrade : nWidthRate);
+    let nWidthTime = this.timingControl.getPreferredSize().width
+    let nWidthCompare = (nWidthTrade > nWidthRate ? nWidthTrade : nWidthRate);
+    let nWidth = (nWidthCompare > nWidthTime ? nWidthCompare : nWidthTime);
 
     const checklist = document.getElementsByClassName('checklist') as HTMLCollectionOf<HTMLElement>;
     wjc.setCss(checklist, {width: `${nWidth}px`});

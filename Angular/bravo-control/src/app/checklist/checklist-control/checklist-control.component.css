@@ -28,7 +28,8 @@
 
 .button-appearance {
   background-color: #eee;
-  margin-right: 5px;
+  margin: 5px;
+  margin-left: 0px;
   border: none;
   color: black;
   padding: 5px;

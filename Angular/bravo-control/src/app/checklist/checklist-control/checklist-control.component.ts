@@ -240,9 +240,8 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     let _sz = new wjc.Size(),
         _nW = 0, _nH = 0;
 
-    let _sizeText = BravoGraphicsRenderer.measureString(this._zText, new Font('Segoe UI', 9.75))!;
-    if(_sizeText) {
-      _nW += 25
+    if(this._zText) {
+      let _sizeText = BravoGraphicsRenderer.measureString(this._zText, new Font('Segoe UI', 9.75))!;
       _nH += (_sizeText.height > 21) ? _sizeText.height + 4 : 25;
     }
 
@@ -255,17 +254,27 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
         let _size = BravoGraphicsRenderer.measureString(_ctrl.text, new Font('Segoe UI', 9.75))!;
 
         _arrSize.push(_size.width);
-        _arrSize.sort((a:number, b:number) => {return b-a})
+        _arrSize.sort((a:number, b:number) => {return b-a});
 
-        if (i == 0) {
-            _nW += (_size.width + 20);
+        if (this.checkAppearance == AppearanceStyleEnum.Checkbox) {
+          if (i == 0) {
+            _nW += (_size.width + 45);
             _nH += (_size.height > 21) ? _size.height + 4 : 25;
-        }
-        else if (this.flowDirection == FlowDirection.LeftToRight || this.flowDirection == FlowDirection.RightToLeft)
+          }
+          else if (this.flowDirection == FlowDirection.LeftToRight || this.flowDirection == FlowDirection.RightToLeft)
             _nW += (_size.width + 20);
-        else if (this.flowDirection == FlowDirection.TopDown || this.flowDirection == FlowDirection.BottomUp) {
-          _nW = 45 + _arrSize[0]
-          _nH += (_size.height > 21) ? _size.height + 4 : 25;
+          else if (this.flowDirection == FlowDirection.TopDown || this.flowDirection == FlowDirection.BottomUp) {
+            _nW = 45 + _arrSize[0];
+            _nH += (_size.height > 21) ? _size.height + 4 : 25;
+          }
+        } else if (this.checkAppearance == AppearanceStyleEnum.Button) {
+          if (this.flowDirection == FlowDirection.LeftToRight || this.flowDirection == FlowDirection.RightToLeft) {
+            _nW += _size.width + 20;
+            _nH = (_size.height > 18) ? _size.height + 20 : 38;
+          } else if (this.flowDirection == FlowDirection.TopDown || this.flowDirection == FlowDirection.BottomUp) {
+            _nW = 20 + _arrSize[0];
+            _nH += (_size.height > 18) ? _size.height + 20 : 38;
+          }
         }
     }
 
