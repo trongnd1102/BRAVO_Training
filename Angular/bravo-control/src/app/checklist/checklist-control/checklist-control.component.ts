@@ -168,13 +168,15 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
       _option = new BravoOptionBox(pzName, pzText, pValue);
       this.controls.push(_option);
     }
+    this.updateCheckBox()
   }
 
   updateCheckBox() {
     for(let i = 0; i < this.controls.length; i++) {
       for(let j = 0; j < this.valueList.length; j++) {
-        if(this.controls[i].value == this.valueList[j])
+        if(this.controls[i].value == this.valueList[j]) {
           this.controls[i].checked = true;
+        }
       }
     }
     this.viewCheckList.checked = this.controls.every(option => option.checked == true);
@@ -270,10 +272,10 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
         } else if (this.checkAppearance == AppearanceStyleEnum.Button) {
           if (this.flowDirection == FlowDirection.LeftToRight || this.flowDirection == FlowDirection.RightToLeft) {
             _nW += _size.width + 20;
-            _nH = (_size.height > 18) ? _size.height + 20 : 38;
+            _nH = (_size.height > 18) ? _size.height + 12 : 30;
           } else if (this.flowDirection == FlowDirection.TopDown || this.flowDirection == FlowDirection.BottomUp) {
             _nW = 20 + _arrSize[0];
-            _nH += (_size.height > 18) ? _size.height + 20 : 38;
+            _nH += (_size.height > 18) ? _size.height + 12 : 30;
           }
         }
     }

@@ -84,11 +84,13 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
     this.tradingControl.zValueListSeparator = ",";
     this.tradingControl.bAllowSelectMultiValue = false;
     this.tradingControl.flowDirection = FlowDirection.TopDown;
+    this.form.get('Trading')?.setValue("CustomerCareTradingCode")
 
     this.ratingControl.zText = "Loại đánh giá";
     this.ratingControl.flowDirection = FlowDirection.TopDown;
 
     this.timingControl.checkAppearance = AppearanceStyleEnum.Button;
+    this.form.get('Timing')?.setValue("QuarterCode")
   }
 
   ngAfterViewInit(): void {
