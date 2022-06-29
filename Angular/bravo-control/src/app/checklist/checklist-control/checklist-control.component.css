@@ -14,11 +14,12 @@
 }
 
 .checklist-control input {
-  vertical-align: middle;
+  vertical-align: bottom;
 }
 
 .checklist-control span {
-  vertical-align: middle;
+  font-family: 'Segoe UI';
+  font-size: 9.75pt;
 }
 
 .list-option {

@@ -2,12 +2,25 @@
   width: 100%;
   height: calc(100vh - 139px);
   display: flex;
+  background-color: rgb(200, 200, 200);
+}
+
+.main-content div {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .checklist {
   background-color: #145794;
+  margin: 10px;
 }
 
 .checklist div {
   margin: 5px;
+}
+
+.box {
+  background-color: #145794;
+  margin-right: 10px;
+  color: white
 }

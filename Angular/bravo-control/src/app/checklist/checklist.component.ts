@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { FlowDirection } from './flow-direction';
 import { AppearanceStyleEnum } from './appearance-style';
 
+import * as wjc from '@grapecity/wijmo';
+
 @Component({
   selector: 'app-checklist',
   templateUrl: './checklist.component.html',
@@ -78,19 +80,15 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
       console.log(value)
     })
 
-    // this.form.get('Trading')!.setValue('OrderTradingCode');
     this.tradingControl.zText = "Loại giao dịch";
     this.tradingControl.zValueListSeparator = ",";
     this.tradingControl.bAllowSelectMultiValue = false;
+    this.tradingControl.flowDirection = FlowDirection.TopDown;
 
-    // this.form.get('Rating')!.setValue('AttitudeRatingCode,QualityRatingCode');
     this.ratingControl.zText = "Loại đánh giá";
-    this.ratingControl.zValueListSeparator = ",";
-    this.ratingControl.bAllowSelectMultiValue = true;
-    this.ratingControl.readOnly = false;
     this.ratingControl.flowDirection = FlowDirection.TopDown;
 
-    this.timingControl.checkAppearance = AppearanceStyleEnum.Button;
+    // this.timingControl.checkAppearance = AppearanceStyleEnum.Button;
   }
 
   ngAfterViewInit(): void {
@@ -98,18 +96,28 @@ export class ChecklistComponent implements OnInit, AfterViewInit {
       this.tradingControl.addOption(this.tradingData[i].name,
         this.tradingData[i].text, this.tradingData[i].value)
     }
-    this.tradingControl.updateCheckBox();
 
     for (let i = 0; i < this.ratingData.length; i++) {
       this.ratingControl.addOption(this.ratingData[i].name,
         this.ratingData[i].text, this.ratingData[i].value)
     }
-    this.ratingControl.updateCheckBox();
 
-    for (let i = 0; i < this.timingData.length; i++) {
-      this.timingControl.addOption(this.timingData[i].name,
-        this.timingData[i].text, this.timingData[i].value)
-    }
+    // for (let i = 0; i < this.timingData.length; i++) {
+    //   this.timingControl.addOption(this.timingData[i].name,
+    //     this.timingData[i].text, this.timingData[i].value)
+    // }
+
+    let nWidthTrade = this.tradingControl.getPreferredSize().width;
+    let nWidthRate = this.ratingControl.getPreferredSize().width;
+    let nWidth = (nWidthTrade > nWidthRate ? nWidthTrade : nWidthRate);
+
+    const checklist = document.getElementsByClassName('checklist') as HTMLCollectionOf<HTMLElement>;
+    wjc.setCss(checklist, {width: `${nWidth}px`});
+
+    const box = Array.from(document.getElementsByClassName('box') as HTMLCollectionOf<HTMLElement>);
+    box.forEach(element => {
+      wjc.setCss(element, {width: `calc((100% - 20px - 2*10px - ${nWidth}px)/2)`});
+    })
   }
 
 }

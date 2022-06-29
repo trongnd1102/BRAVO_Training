@@ -77,7 +77,7 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     this._controls = pValue;
   }
 
-  private _readOnly!: boolean ;
+  private _readOnly: boolean = false;
 
   public get readOnly(): boolean {
     return this._readOnly;
@@ -160,7 +160,6 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
   }
 
   ngOnInit(): void {
-    this.refresh();
   }
 
   public addOption(pzName: string, pzText: string, pValue: any) {
@@ -234,8 +233,6 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     }
 
     this.viewCheckList.checked = this.controls.every(option => option.checked == true);
-    let _size = BravoGraphicsRenderer.measureString(e.target.value, new Font('Segoe UI', 9.75))!;
-    console.log(_size)
     this.onChange(this.valueList.join(this.zValueListSeparator));
   }
 
@@ -243,25 +240,33 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     let _sz = new wjc.Size(),
         _nW = 0, _nH = 0;
 
-    let _nCtrls = this.controls.length;
+    let _sizeText = BravoGraphicsRenderer.measureString(this._zText, new Font('Segoe UI', 9.75))!;
+    if(_sizeText) {
+      _nW += 25
+      _nH += (_sizeText.height > 21) ? _sizeText.height + 4 : 25;
+    }
 
-    // Test measureString
-    let _size1 = BravoGraphicsRenderer.measureString(this._zText, new Font('Segoe UI', 15))!;
+    let _nCtrls = this.controls.length;
+    let _arrSize = [];
 
     for (let i = 0; i < _nCtrls; i++) {
         let _ctrl = this.controls[i];
-        let _zText = _ctrl.text;
 
-        let _size = BravoGraphicsRenderer.measureString(_zText, new Font('Segoe UI', 9.75))!;
+        let _size = BravoGraphicsRenderer.measureString(_ctrl.text, new Font('Segoe UI', 9.75))!;
+
+        _arrSize.push(_size.width);
+        _arrSize.sort((a:number, b:number) => {return b-a})
+
         if (i == 0) {
-            _nW += (_size.width + 23);
+            _nW += (_size.width + 20);
             _nH += (_size.height > 21) ? _size.height + 4 : 25;
         }
         else if (this.flowDirection == FlowDirection.LeftToRight || this.flowDirection == FlowDirection.RightToLeft)
-            _nW += (_size.width + 23);
-        else if (this.flowDirection == FlowDirection.TopDown || this.flowDirection == FlowDirection.BottomUp)
-            _nH += (_size.height > 21) ? _size.height + 4 : 25;
-
+            _nW += (_size.width + 20);
+        else if (this.flowDirection == FlowDirection.TopDown || this.flowDirection == FlowDirection.BottomUp) {
+          _nW = 45 + _arrSize[0]
+          _nH += (_size.height > 21) ? _size.height + 4 : 25;
+        }
     }
 
     if (!this.minimumSize.equals(new wjc.Size())) {
@@ -283,8 +288,8 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     _sz.width = _nW;
     _sz.height = _nH;
 
-    // return _sz;
-    return _size1;
+    console.log(this.controls, _sz)
+    return _sz;
   }
 
   public override refresh(fullUpdate?: boolean) {
@@ -301,6 +306,8 @@ export class ChecklistControlComponent extends Control implements OnInit, Contro
     if(this.cssOption) {
       wjc.setCss(this.cssOption.nativeElement, _css);
     }
+
+    this.getPreferredSize();
   }
 }
 
