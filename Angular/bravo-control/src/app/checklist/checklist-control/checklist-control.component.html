@@ -9,7 +9,7 @@
             [disabled]="readOnly || !bAllowSelectMultiValue"><span>{{zText}}</span>
         </label>
           <ul #option class="list-option"
-              [ngStyle]="{'padding-inline-start': (checkAppearance == 1) ? '5px' : ''}">
+              [ngStyle]="{'padding-inline-start': (checkAppearance == 1) ? '0px' : ''}">
             <li *ngFor="let control of controls">
               <label [class.button-appearance]="checkAppearance == 1"
                   [ngClass]="(control.checked && checkAppearance == 1) ? ' active' : ''">
